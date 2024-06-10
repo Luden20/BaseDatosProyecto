@@ -200,10 +200,15 @@ import javax.swing.table.DefaultTableModel;
         {
             PreparedStatement p=Conexion.prepareStatement(sql);
             ResultSet rs=p.executeQuery();
-            return rs.getString(1);
+            rs.next();
+            //printResultSet(rs);
+            String x=rs.getString(1);
+            System.out.println(x);
+            return x;
         }
         catch(SQLException e)
         {
+            System.out.println(e.getMessage());
             return "NULL";
         }
     }

@@ -36,6 +36,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TABLA = new javax.swing.JTable();
         CBCedula = new javax.swing.JComboBox<>();
+        Nombre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,21 +65,27 @@ public class Ver_Facturas extends javax.swing.JFrame {
             }
         });
 
+        Nombre.setText("Nombre");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addContainerGap(72, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(CBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(CBFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(219, 219, 219))))
+                        .addGap(219, 219, 219))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(Nombre)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,9 +94,11 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CBFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(109, 109, 109)
+                .addComponent(Nombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(59, 59, 59))
         );
 
         pack();
@@ -103,9 +112,13 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
     private void CBCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBCedulaActionPerformed
         // TODO add your handling code here:
-        String Comando="SELECT FAC_NUMERO FROM FACTURA WHERE CLI_CEDULA_RUC='"+CBCedula.getSelectedItem().toString()+"'";
+        String Cedula=CBCedula.getSelectedItem().toString();
+        String Comando="SELECT FAC_NUMERO FROM FACTURA WHERE CLI_CEDULA_RUC='"+Cedula+"'";
         System.out.println(Comando);
         CBFactura.setModel(db.ListadoComplejo(Comando));
+        Comando="SELECT CLI_NOMBRE FROM CLIENTE WHERE CLI_CEDULA_RUC='"+Cedula+"'";
+        Nombre.setText(db.get(Comando));
+        System.out.println(Comando);
     }//GEN-LAST:event_CBCedulaActionPerformed
 
     /**
@@ -146,6 +159,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBCedula;
     private javax.swing.JComboBox<String> CBFactura;
+    private javax.swing.JLabel Nombre;
     private javax.swing.JTable TABLA;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
