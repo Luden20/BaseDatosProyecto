@@ -164,8 +164,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
         String Comando="SELECT FAC_NUMERO FROM FACTURA WHERE CLI_CEDULA_RUC='"+Cedula+"'";
         System.out.println(Comando);
         CBFactura.setModel(db.ListadoComplejo(Comando));
-        Comando="SELECT CLI_NOMBRE FROM CLIENTE WHERE CLI_CEDULA_RUC='"+Cedula+"'";
-        Nombre.setText(db.get(Comando));
+        String Nombre_Cliente=db.get("SELECT CLI_NOMBRE FROM CLIENTE WHERE CLI_CEDULA_RUC='"+Cedula+"'");
+        Nombre.setText(Nombre_Cliente);
         System.out.println(Comando);
     }//GEN-LAST:event_CBCedulaActionPerformed
 
