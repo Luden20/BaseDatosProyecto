@@ -37,6 +37,10 @@ public class Ver_Facturas extends javax.swing.JFrame {
         TABLA = new javax.swing.JTable();
         CBCedula = new javax.swing.JComboBox<>();
         Nombre = new javax.swing.JLabel();
+        Cedula_Vendedor = new javax.swing.JLabel();
+        Fecha_Factura = new javax.swing.JLabel();
+        Nombre_Vendedor = new javax.swing.JLabel();
+        Sucursal_Nombre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,25 +71,42 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
         Nombre.setText("Nombre");
 
+        Cedula_Vendedor.setText("Cedula Vendedor");
+
+        Fecha_Factura.setText("Fecha FACTURA");
+
+        Nombre_Vendedor.setText("Nombre Vendedor");
+
+        Sucursal_Nombre.setText("Sucursal");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
+                .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(CBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(CBFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(219, 219, 219))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(Nombre)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Nombre)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 384, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Nombre_Vendedor)
+                                    .addComponent(Cedula_Vendedor))))
+                        .addGap(58, 58, 58))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Fecha_Factura)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Sucursal_Nombre)
+                        .addGap(97, 97, 97))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,11 +115,23 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CBFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(109, 109, 109)
-                .addComponent(Nombre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Cedula_Vendedor)
+                            .addComponent(Nombre))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Nombre_Vendedor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                        .addComponent(Fecha_Factura)
+                        .addGap(100, 100, 100)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(Sucursal_Nombre)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -106,8 +139,23 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
     private void CBFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBFacturaActionPerformed
         // TODO add your handling code here:
-        String Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+CBFactura.getSelectedItem().toString();
+        //Esto es lo que pasa cuando se selecciona una factura
+        String Factura=CBFactura.getSelectedItem().toString();
+        String Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+Factura;
         db.MostrarTabla(Comando, T);
+        //Aqui deberias poner la info del vendedor
+        //ST es de String xd
+        String Cedula_VendendorST=db.get("SELECT VEN_CEDULA_RUC FROM FACTURA WHERE FAC_NUMERO="+Factura);
+        Cedula_Vendedor.setText(Cedula_VendendorST);
+        String Nombre_VendedorST=(db.get("SELECT VEN_NOMBRE FROM VENDEDOR WHERE VEN_CEDULA_RUC='"+Cedula_VendendorST+"'"));
+        Nombre_Vendedor.setText(Nombre_VendedorST);
+        //Aqui deberia ir la info de la factura
+        String Fecha_FacturaST=db.get("SELECT FAC_FECHA FROM FACTURA WHERE FAC_NUMERO="+Factura);
+        Fecha_Factura.setText(Fecha_FacturaST);
+        //Aqui deberia ir la info de la sucursal
+        String Sucursal_Codigo=db.get("SELECT SUC_CODIGO FROM FACTURA WHERE FAC_NUMERO="+Factura);
+        String Sucursal_NombreST=db.get("SELECT SUC_NOMBRE FROM SUCURSAL WHERE SUC_CODIGO='"+Sucursal_Codigo+"'");
+        Sucursal_Nombre.setText(Sucursal_NombreST);
     }//GEN-LAST:event_CBFacturaActionPerformed
 
     private void CBCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBCedulaActionPerformed
@@ -159,7 +207,11 @@ public class Ver_Facturas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBCedula;
     private javax.swing.JComboBox<String> CBFactura;
+    private javax.swing.JLabel Cedula_Vendedor;
+    private javax.swing.JLabel Fecha_Factura;
     private javax.swing.JLabel Nombre;
+    private javax.swing.JLabel Nombre_Vendedor;
+    private javax.swing.JLabel Sucursal_Nombre;
     private javax.swing.JTable TABLA;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

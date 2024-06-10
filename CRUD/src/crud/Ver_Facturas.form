@@ -23,25 +23,37 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace pref="72" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="CBCedula" min="-2" pref="143" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="CBFactura" min="-2" pref="110" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="516" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jScrollPane1" alignment="1" min="-2" pref="516" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="Nombre" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="384" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="Nombre_Vendedor" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Cedula_Vendedor" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="Fecha_Factura" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="Sucursal_Nombre" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
-              <Component id="Nombre" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,11 +65,27 @@
                   <Component id="CBFactura" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="CBCedula" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-              <Component id="Nombre" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="135" max="32767" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="302" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Cedula_Vendedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="Nombre_Vendedor" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="86" max="32767" attributes="0"/>
+                      <Component id="Fecha_Factura" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="302" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
+                      <Component id="Sucursal_Nombre" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -113,6 +141,26 @@
     <Component class="javax.swing.JLabel" name="Nombre">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nombre"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Cedula_Vendedor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cedula Vendedor"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Fecha_Factura">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fecha FACTURA"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Nombre_Vendedor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nombre Vendedor"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Sucursal_Nombre">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sucursal"/>
       </Properties>
     </Component>
   </SubComponents>
