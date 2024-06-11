@@ -40,8 +40,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         Fecha_Factura = new javax.swing.JLabel();
         Nombre_Vendedor = new javax.swing.JLabel();
         Sucursal_Nombre = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        CBFactura = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         LabelCliCiudad = new javax.swing.JLabel();
         LabelCliNombre = new javax.swing.JLabel();
@@ -50,6 +48,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         LabelCliTelefono = new javax.swing.JLabel();
         LabelCliDireccion = new javax.swing.JLabel();
         LabelCliSector = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         CBCedula = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -63,6 +62,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
         LabelVenCedula = new javax.swing.JLabel();
         LabelVenCorreo = new javax.swing.JLabel();
         LabelVenTelefono = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        CBFactura = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -100,17 +101,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         Sucursal_Nombre.setText("Sucursal");
         jPanel1.add(Sucursal_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
-        jLabel1.setText("Detalles de la factura por cliente");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-
-        CBFactura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBFacturaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(CBFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 110, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 230, 300));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 90, 230, 300));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -128,26 +119,35 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
         LabelCliSector.setText("Sector");
 
+        jLabel3.setText("Cliente");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelCliCiudad)
-                    .addComponent(LabelCliCorreo)
-                    .addComponent(LabelCliApellido)
-                    .addComponent(LabelCliNombre)
-                    .addComponent(LabelCliSector)
-                    .addComponent(LabelCliDireccion)
-                    .addComponent(LabelCliTelefono))
-                .addContainerGap(152, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelCliCiudad)
+                            .addComponent(LabelCliCorreo)
+                            .addComponent(LabelCliApellido)
+                            .addComponent(LabelCliNombre)
+                            .addComponent(LabelCliSector)
+                            .addComponent(LabelCliDireccion)
+                            .addComponent(LabelCliTelefono)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel3)))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(8, 8, 8)
                 .addComponent(LabelCliNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LabelCliApellido)
@@ -176,7 +176,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Ejemplos");
+        jLabel2.setText("Factura");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
 
         LabelFacFecha.setText("Fecha");
@@ -205,6 +205,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
         LabelVenTelefono.setText("Telefono");
 
+        jLabel1.setText("Vendedor Info");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -212,17 +214,20 @@ public class Ver_Facturas extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addComponent(LabelVenTelefono)
                     .addComponent(LabelVenCorreo)
                     .addComponent(LabelVenCedula)
                     .addComponent(LabelVenApellido)
                     .addComponent(LabelVenNombre))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(LabelVenNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LabelVenApellido)
@@ -235,7 +240,14 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 .addContainerGap(113, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 350, 210, 290));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 210, 290));
+
+        CBFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBFacturaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CBFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 110, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -390,6 +402,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private javax.swing.JTable TABLA;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

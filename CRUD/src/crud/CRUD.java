@@ -14,7 +14,7 @@ public class CRUD {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Ver_Facturas a=new Ver_Facturas();
+        Ingreso_Factura a=new Ingreso_Factura();
         a.setVisible(true);
     }
     
