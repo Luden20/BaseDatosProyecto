@@ -135,6 +135,7 @@ import javax.swing.table.DefaultTableModel;
     {
         LinkedList<String> aux=new LinkedList<String>();
         aux.add("VACIO");
+        System.out.println(SQL);
         try
         {
             aux.clear();
@@ -185,10 +186,13 @@ import javax.swing.table.DefaultTableModel;
         {
             PreparedStatement p=Conexion.prepareStatement(sql);
             ResultSet rs=p.executeQuery();
+            rs.next();
+            printResultSet(rs);
             return rs.getInt(1);
         }
         catch(SQLException e)
         {
+            System.out.println(e.getMessage());
             return 0;
         }
     }
@@ -211,6 +215,10 @@ import javax.swing.table.DefaultTableModel;
             System.out.println(e.getMessage());
             return "NULL";
         }
+    }
+    public int getInt(String SQL)
+    {
+        return Integer.parseInt(get(SQL));
     }
     public void MostrarTabla(String query,DefaultTableModel T) {
         try
