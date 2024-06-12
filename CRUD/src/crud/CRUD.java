@@ -4,6 +4,8 @@
  */
 package crud;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author polip
@@ -15,6 +17,7 @@ public class CRUD {
      */
     public static void main(String[] args) {
         Ver_Facturas a=new Ver_Facturas();
+        a.setExtendedState(JFrame.MAXIMIZED_BOTH);
         a.setVisible(true);
     }
     

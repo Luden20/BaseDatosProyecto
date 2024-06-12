@@ -72,19 +72,22 @@ import javax.swing.table.DefaultTableModel;
              System.out.println("NO Conectado");
         }
     }
-    public void Instruccion(String sql)
+    public boolean Instruccion(String sql)
     {
         try
         {
+            System.out.println(sql);
             PreparedStatement pstmt = Conexion.prepareStatement(sql);
             pstmt.executeUpdate();
             System.out.println("Se hizo bien");
             JOptionPane.showMessageDialog(null, "Salió bien la operación", "Información", JOptionPane.INFORMATION_MESSAGE);
+            return true;
         }
         catch(SQLException e)
         {
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "Ocurrió un error en la operación: "+e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
     }
     public static void printResultSet(ResultSet rs) {
@@ -110,6 +113,7 @@ import javax.swing.table.DefaultTableModel;
     public DefaultComboBoxModel Listado(String Tabla,String Atributo)
     {
         LinkedList<String> aux=new LinkedList<String>();
+        System.out.println("SELECT "+Atributo+" FROM "+Tabla+" GROUP BY "+Atributo+"");
         aux.add("VACIO");
         try
         {
@@ -197,6 +201,26 @@ import javax.swing.table.DefaultTableModel;
         }
     }
     public String get(String sql)
+    {
+        //Esta funcion asume que el query de seleccion esta bien hecho y devuelve un  solo registro con un solo atriubto
+        //HAGANLO BIEN O DEVOLVERLA CUALQUIER COSA
+        try
+        {
+            PreparedStatement p=Conexion.prepareStatement(sql);
+            ResultSet rs=p.executeQuery();
+            rs.next();
+            //printResultSet(rs);
+            String x=rs.getString(1);
+            System.out.println(x);
+            return x;
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+            return "NULL";
+        }
+    }
+    public String get2(String sql)
     {
         //Esta funcion asume que el query de seleccion esta bien hecho y devuelve un  solo registro con un solo atriubto
         //HAGANLO BIEN O DEVOLVERLA CUALQUIER COSA
