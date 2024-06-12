@@ -80,13 +80,13 @@ import javax.swing.table.DefaultTableModel;
             PreparedStatement pstmt = Conexion.prepareStatement(sql);
             pstmt.executeUpdate();
             System.out.println("Se hizo bien");
-            JOptionPane.showMessageDialog(null, "Salió bien la operación", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Operacion ejecutada correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             return true;
         }
         catch(SQLException e)
         {
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "Ocurrió un error en la operación: "+e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ocurrió un error en la operación: \n"+e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
@@ -258,12 +258,15 @@ import javax.swing.table.DefaultTableModel;
                     aux.add(metaData.getColumnName(i));
                 }
                 T.setColumnIdentifiers(aux.toArray());
-                System.out.println();    
+                System.out.println(); 
                 LinkedList<String> aux2=new LinkedList<String>();
                 while (rs.next()) {
                     aux2.clear();
+                    System.out.println("-------------------");
                     for (int i = 1; i <= columnCount; i++) {
-                        aux2.add(rs.getString(i));
+                        String saux=rs.getString(i);
+                        System.out.println(saux+" "+i);
+                        aux2.add(saux);
                     }
                     T.addRow(aux2.toArray());
                 }
@@ -271,12 +274,16 @@ import javax.swing.table.DefaultTableModel;
             else
             {
                 T.setRowCount(0);
+                JOptionPane.showMessageDialog(null, "Tabla vacia", "Error", JOptionPane.ERROR_MESSAGE);
+
             }
             
         }
         catch(SQLException e)
         {
             T.setRowCount(0);
+            JOptionPane.showMessageDialog(null, "Ocurrió un error en la operación: "+e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
         }
     }
 }

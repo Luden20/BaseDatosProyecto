@@ -4,9 +4,9 @@
  */
 package crud;
 
-import java.awt.Component;
-import java.awt.Container;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static oracle.sql.NUMBER.e;
 
 /**
  *
@@ -32,7 +32,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         TablaFormasPago.setModel(T3);
         TABLA.setModel(T);
         
-        TablaFormasPago.setVisible(false);
+        TablaFormasPago.setVisible(true);
         TABLA.setVisible(false);
         
         CBCedulaBuscar.setModel(db.Listado("Cliente", "cli_cedula_ruc"));
@@ -539,9 +539,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
                             .addComponent(CBCedulaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TFClienteBuscarCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                             .addComponent(TFNombre)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(BTCrearCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CBSucursal, javax.swing.GroupLayout.Alignment.LEADING, 0, 166, Short.MAX_VALUE)))))
+                            .addComponent(BTCrearCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(CBSucursal, 0, 175, Short.MAX_VALUE))))
                 .addContainerGap())
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(145, 145, 145)
@@ -830,9 +829,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Panel_IngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(PanelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(Panel_IngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(PanelDetalleFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PanelInteractuar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(PanelDetalleFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelInteractuar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 320, Short.MAX_VALUE))
         );
         Panel_IngresoLayout.setVerticalGroup(
@@ -1073,11 +1071,9 @@ public class Ver_Facturas extends javax.swing.JFrame {
                             .addComponent(jLabel14)
                             .addComponent(TFCedulaBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CBFactura)
-                            .addComponent(jLabel20))
-                        .addGap(41, 41, 41))
-                    .addGroup(PanelBsucarLayout.createSequentialGroup()
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))))
+                            .addComponent(jLabel20)))
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
         );
 
         BTDevolucion.setText("Devolucion o Anulacion");
@@ -1096,7 +1092,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 .addGroup(PanelVerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(PanelBsucar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Info, javax.swing.GroupLayout.PREFERRED_SIZE, 1116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Tablas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1125, Short.MAX_VALUE))
+                    .addComponent(Tablas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1126, Short.MAX_VALUE))
                 .addGap(28, 28, 28)
                 .addComponent(BTDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(421, 421, 421))
@@ -1127,7 +1123,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         //Esto es lo que pasa cuando se selecciona una factura
         FacturaVeryActualizar=CBFactura.getSelectedItem().toString();
         String validar=db.get("SELECT FAC_ESTADO FROM FACTURA WHERE FAC_NUMERO='"+FacturaVeryActualizar+"'");
-        TablaFormasPago.setVisible(true);
+        Tabla_MetodosPago.setVisible(true);
         TABLA.setVisible(true);
         if (validar.equals("V"))//VALIDA
         {
@@ -1432,7 +1428,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private void CANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CANCELARActionPerformed
         // TODO add your handling code here:
         db.Instruccion("DELETE FROM DETALLE_FACTURA WHERE FAC_NUMERO="+FacNumero);
-        db.Instruccion("DELETE FROM FORM_PAG_FACTURA WHERE FACTURA='"+FacNumero+"'");
+        db.Instruccion("DELETE FROM FORM_PAG_FACTURA WHERE FAC_NUMERO="+FacNumero+"");
         db.Instruccion("DELETE FROM FACTURA WHERE FAC_NUMERO="+FacNumero);
         db.Instruccion("ROLLBACK");
         PanelDetalleFactura.setVisible(false);
@@ -1453,6 +1449,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         // TODO add your handling code here:
         db.Instruccion("COMMIT");
         FacNumero=db.get("SELECT COUNT(*)+100 FROM FACTURA");
+        IDProducto="";
         boolean crearFac=db.Instruccion("INSERT INTO FACTURA(FAC_NUMERO,SUC_CODIGO,TRN_CODIGO,CLI_CEDULA_RUC,VEN_CEDULA_RUC,FAC_FECHA,FAC_ESTADO) VALUES("+FacNumero+",'"+IDSucursal+"','T-003','"+CedulaIngresoFactura+"','"+IDVendedor+"',SYSDATE,'V')");
         if(crearFac)
         {
@@ -1467,6 +1464,10 @@ public class Ver_Facturas extends javax.swing.JFrame {
                       TFClienteBuscarCedula.setEnabled(false);
             TFNombreVendedor.setEnabled(false);
             TFBsucarCedulaV.setEnabled(false);
+                    PanelFormasPago.setVisible(false);
+        PanelAgregarProductos.setVisible(true);
+                String Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+FacNumero;
+        db.MostrarTabla(Comando, T2);
            LabelFAC.setText("Factura #"+FacNumero);
         }
         else
@@ -1554,6 +1555,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
         // TODO add your handling code here:
         PanelFormasPago.setVisible(true);
         PanelAgregarProductos.setVisible(false);
+                String Consulta="SELECT FP.FRP_DESCRIPCION AS METODO_DE_PAGO, FPF.FPF_CANTIDAD AS CANTIDAD FROM FORMA_PAGO FP INNER JOIN FORM_PAG_FACTURA FPF ON FPF.FRP_CODIGO=FP.FRP_CODIGO WHERE FAC_NUMERO="+FacNumero+"";
+        db.MostrarTabla(Consulta, T3);
         CBFormaPago.setModel(db.Listado("FORMA_PAGO", "FRP_DESCRIPCION"));
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -1565,8 +1568,11 @@ public class Ver_Facturas extends javax.swing.JFrame {
         System.out.println(IDFP);
         String Cantidad=TFCantidad.getText();
         db.Instruccion("INSERT INTO FORM_PAG_FACTURA VALUES('"+IDFP+"',"+FacNumero+","+Cantidad+")");
+        
         String Consulta="SELECT FP.FRP_DESCRIPCION AS METODO_DE_PAGO, FPF.FPF_CANTIDAD AS CANTIDAD FROM FORMA_PAGO FP INNER JOIN FORM_PAG_FACTURA FPF ON FPF.FRP_CODIGO=FP.FRP_CODIGO WHERE FAC_NUMERO="+FacNumero+"";
         db.MostrarTabla(Consulta, T3);
+        
+        ConexionOracle.printResultSet(db.ejecutarQuery(Consulta));
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void BTPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTPagarActionPerformed

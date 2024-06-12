@@ -87,10 +87,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="PanelBotones" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="PanelDetalleFactura" max="32767" attributes="0"/>
-                              <Component id="PanelInteractuar" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="PanelDetalleFactura" max="32767" attributes="0"/>
+                          <Component id="PanelInteractuar" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="320" max="32767" attributes="0"/>
                   </Group>
@@ -521,10 +519,8 @@
                                           <Component id="CBCedulaBuscar" min="-2" pref="166" max="-2" attributes="0"/>
                                           <Component id="TFClienteBuscarCedula" pref="175" max="32767" attributes="0"/>
                                           <Component id="TFNombre" max="32767" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="BTCrearCliente" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="CBSucursal" alignment="0" pref="166" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="BTCrearCliente" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="CBSucursal" alignment="0" pref="175" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1106,7 +1102,7 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="PanelBsucar" alignment="1" max="32767" attributes="0"/>
                           <Component id="Info" min="-2" pref="1116" max="-2" attributes="0"/>
-                          <Component id="Tablas" alignment="1" pref="1125" max="32767" attributes="0"/>
+                          <Component id="Tablas" alignment="1" pref="1126" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="BTDevolucion" min="-2" pref="170" max="-2" attributes="0"/>
@@ -1465,13 +1461,10 @@
                                       <Component id="CBFactura" alignment="3" max="32767" attributes="0"/>
                                       <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jButton5" min="-2" pref="61" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jButton5" min="-2" pref="61" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="41" pref="41" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
