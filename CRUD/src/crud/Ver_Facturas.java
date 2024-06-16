@@ -57,6 +57,16 @@ public class Ver_Facturas extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         Panel_Principal = new javax.swing.JPanel();
         PanelVer = new javax.swing.JPanel();
+        PanelBsucar = new javax.swing.JPanel();
+        CBFactura = new javax.swing.JComboBox<>();
+        CBCedula = new javax.swing.JComboBox<>();
+        jButton5 = new javax.swing.JButton();
+        TFNombreBuscado = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        TFCedulaBuscado = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         Info = new javax.swing.JPanel();
         GeneralInfo = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
@@ -93,39 +103,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
         Tabla_MetodosPago = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         TABLA = new javax.swing.JTable();
-        PanelBsucar = new javax.swing.JPanel();
-        CBFactura = new javax.swing.JComboBox<>();
-        CBCedula = new javax.swing.JComboBox<>();
-        jButton5 = new javax.swing.JButton();
-        TFNombreBuscado = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        TFCedulaBuscado = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         BTDevolucion = new javax.swing.JButton();
         Panel_Ingreso = new javax.swing.JPanel();
-        PanelDetalleFactura = new javax.swing.JPanel();
-        PanelAgregarProductos = new javax.swing.JPanel();
-        CBCat = new javax.swing.JComboBox<>();
-        TFProductoenCategoria = new javax.swing.JTextField();
-        CBProductos = new javax.swing.JComboBox<>();
-        TFProducto = new javax.swing.JTextField();
-        CBCantidad = new javax.swing.JComboBox<>();
-        LabelPrecioUnitario = new javax.swing.JLabel();
-        LabelPrecioTotal = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TableDetalle_Factura_Insercion = new javax.swing.JTable();
-        LabelFAC = new javax.swing.JLabel();
-        PanelFormasPago = new javax.swing.JPanel();
-        CBFormaPago = new javax.swing.JComboBox<>();
-        TFCantidad = new javax.swing.JTextField();
-        BTPagar = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        TablaFormasPago = new javax.swing.JTable();
         PanelInteractuar = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         TFNombre = new javax.swing.JTextField();
@@ -183,6 +162,27 @@ public class Ver_Facturas extends javax.swing.JFrame {
         PanelBotones = new javax.swing.JPanel();
         BTCrearFactura = new javax.swing.JButton();
         CANCELAR = new javax.swing.JButton();
+        PanelDetalleFactura = new javax.swing.JPanel();
+        PanelAgregarProductos = new javax.swing.JPanel();
+        CBCat = new javax.swing.JComboBox<>();
+        TFProductoenCategoria = new javax.swing.JTextField();
+        CBProductos = new javax.swing.JComboBox<>();
+        TFProducto = new javax.swing.JTextField();
+        CBCantidad = new javax.swing.JComboBox<>();
+        LabelPrecioUnitario = new javax.swing.JLabel();
+        LabelPrecioTotal = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TableDetalle_Factura_Insercion = new javax.swing.JTable();
+        LabelFAC = new javax.swing.JLabel();
+        PanelFormasPago = new javax.swing.JPanel();
+        CBFormaPago = new javax.swing.JComboBox<>();
+        TFCantidad = new javax.swing.JTextField();
+        BTPagar = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TablaFormasPago = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1920, 1080));
@@ -192,6 +192,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         Botones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2.setBackground(new java.awt.Color(232, 232, 232));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(53, 57, 88));
         jButton2.setText("Ingreso Factura");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -199,9 +200,10 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        Botones.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
+        Botones.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, -1));
 
         jButton4.setBackground(new java.awt.Color(232, 232, 232));
+        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(53, 57, 88));
         jButton4.setText("Ver Factura");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -209,7 +211,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        Botones.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, -1, -1));
+        Botones.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, -1));
 
         getContentPane().add(Botones);
 
@@ -218,34 +220,106 @@ public class Ver_Facturas extends javax.swing.JFrame {
         PanelVer.setBackground(new java.awt.Color(53, 57, 88));
         PanelVer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        PanelBsucar.setBackground(new java.awt.Color(246, 246, 230));
+        PanelBsucar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        PanelBsucar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        CBFactura.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        CBFactura.setForeground(new java.awt.Color(64, 64, 64));
+        CBFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBFacturaActionPerformed(evt);
+            }
+        });
+        PanelBsucar.add(CBFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 178, -1));
+
+        CBCedula.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        CBCedula.setForeground(new java.awt.Color(64, 64, 64));
+        CBCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBCedulaActionPerformed(evt);
+            }
+        });
+        PanelBsucar.add(CBCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 178, -1));
+
+        jButton5.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(53, 57, 88));
+        jButton5.setText("Refrescar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        PanelBsucar.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 140, 39));
+
+        TFNombreBuscado.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        TFNombreBuscado.setForeground(new java.awt.Color(64, 64, 64));
+        TFNombreBuscado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFNombreBuscadoActionPerformed(evt);
+            }
+        });
+        PanelBsucar.add(TFNombreBuscado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 361, -1));
+
+        jLabel13.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(53, 57, 88));
+        jLabel13.setText("Filtrar por Nombre");
+        PanelBsucar.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(53, 57, 88));
+        jLabel14.setText("Filtrar por Cedula");
+        PanelBsucar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+
+        TFCedulaBuscado.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        TFCedulaBuscado.setForeground(new java.awt.Color(64, 64, 64));
+        TFCedulaBuscado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFCedulaBuscadoActionPerformed(evt);
+            }
+        });
+        PanelBsucar.add(TFCedulaBuscado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 361, -1));
+
+        jLabel19.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(53, 57, 88));
+        jLabel19.setText("Cedula");
+        PanelBsucar.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 170, -1));
+
+        jLabel20.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(53, 57, 88));
+        jLabel20.setText("Numero de Factura");
+        PanelBsucar.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+
+        PanelVer.add(PanelBsucar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 1110, 170));
+
         Info.setBackground(new java.awt.Color(53, 57, 88));
-        Info.setLayout(new java.awt.GridLayout(1, 0, 50, 0));
+        Info.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
 
         GeneralInfo.setBackground(new java.awt.Color(246, 246, 230));
         GeneralInfo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel24.setBackground(new java.awt.Color(53, 57, 88));
-        jLabel24.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(53, 57, 88));
-        jLabel24.setText("Informacion General");
+        jLabel24.setText("General");
 
-        Nombre.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        Nombre.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         Nombre.setForeground(new java.awt.Color(64, 64, 64));
         Nombre.setText("Nombre");
 
-        Cedula_Vendedor.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        Cedula_Vendedor.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         Cedula_Vendedor.setForeground(new java.awt.Color(64, 64, 64));
         Cedula_Vendedor.setText("Cedula Vendedor");
 
-        Fecha_Factura.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        Fecha_Factura.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         Fecha_Factura.setForeground(new java.awt.Color(64, 64, 64));
         Fecha_Factura.setText("Fecha FACTURA");
 
-        Nombre_Vendedor.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        Nombre_Vendedor.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         Nombre_Vendedor.setForeground(new java.awt.Color(64, 64, 64));
         Nombre_Vendedor.setText("Nombre Vendedor");
 
-        Sucursal_Nombre.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        Sucursal_Nombre.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         Sucursal_Nombre.setForeground(new java.awt.Color(64, 64, 64));
         Sucursal_Nombre.setText("Sucursal");
 
@@ -254,33 +328,32 @@ public class Ver_Facturas extends javax.swing.JFrame {
         GeneralInfoLayout.setHorizontalGroup(
             GeneralInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(GeneralInfoLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addGroup(GeneralInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(GeneralInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(Sucursal_Nombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Nombre_Vendedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                        .addComponent(Fecha_Factura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Cedula_Vendedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14))
+                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cedula_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Fecha_Factura, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Nombre_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Sucursal_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         GeneralInfoLayout.setVerticalGroup(
             GeneralInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(GeneralInfoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(Cedula_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(Fecha_Factura, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(Nombre_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(Sucursal_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(Nombre)
+                .addGap(18, 18, 18)
+                .addComponent(Cedula_Vendedor)
+                .addGap(18, 18, 18)
+                .addComponent(Fecha_Factura)
+                .addGap(18, 18, 18)
+                .addComponent(Nombre_Vendedor)
+                .addGap(18, 18, 18)
+                .addComponent(Sucursal_Nombre)
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         Info.add(GeneralInfo);
@@ -289,35 +362,35 @@ public class Ver_Facturas extends javax.swing.JFrame {
         ClienteInformacionVerFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel25.setBackground(new java.awt.Color(53, 57, 88));
-        jLabel25.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(53, 57, 88));
         jLabel25.setText("Cliente");
 
-        LabelCliCiudad.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelCliCiudad.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelCliCiudad.setForeground(new java.awt.Color(64, 64, 64));
         LabelCliCiudad.setText("Ciudad");
 
-        LabelCliNombre.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelCliNombre.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelCliNombre.setForeground(new java.awt.Color(64, 64, 64));
         LabelCliNombre.setText("Nombre");
 
-        LabelCliApellido.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelCliApellido.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelCliApellido.setForeground(new java.awt.Color(64, 64, 64));
         LabelCliApellido.setText("Apellido");
 
-        LabelCliCorreo.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelCliCorreo.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelCliCorreo.setForeground(new java.awt.Color(64, 64, 64));
         LabelCliCorreo.setText("Correo");
 
-        LabelCliTelefono.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelCliTelefono.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelCliTelefono.setForeground(new java.awt.Color(64, 64, 64));
         LabelCliTelefono.setText("Telefono");
 
-        LabelCliDireccion.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelCliDireccion.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelCliDireccion.setForeground(new java.awt.Color(64, 64, 64));
         LabelCliDireccion.setText("Direccion");
 
-        LabelCliSector.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelCliSector.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelCliSector.setForeground(new java.awt.Color(64, 64, 64));
         LabelCliSector.setText("Sector");
 
@@ -325,39 +398,43 @@ public class Ver_Facturas extends javax.swing.JFrame {
         ClienteInformacionVerFactura.setLayout(ClienteInformacionVerFacturaLayout);
         ClienteInformacionVerFacturaLayout.setHorizontalGroup(
             ClienteInformacionVerFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ClienteInformacionVerFacturaLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+            .addGroup(ClienteInformacionVerFacturaLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(ClienteInformacionVerFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ClienteInformacionVerFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(LabelCliSector, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelCliDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelCliTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelCliCorreo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelCliApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelCliNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelCliCiudad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44))
+                    .addGroup(ClienteInformacionVerFacturaLayout.createSequentialGroup()
+                        .addGroup(ClienteInformacionVerFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelCliCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelCliNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelCliApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(61, Short.MAX_VALUE))
+                    .addGroup(ClienteInformacionVerFacturaLayout.createSequentialGroup()
+                        .addGroup(ClienteInformacionVerFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelCliCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelCliTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelCliDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelCliSector, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         ClienteInformacionVerFacturaLayout.setVerticalGroup(
             ClienteInformacionVerFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ClienteInformacionVerFacturaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LabelCliCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelCliNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelCliApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelCliCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelCliTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelCliDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelCliSector, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelCliCiudad)
+                .addGap(18, 18, 18)
+                .addComponent(LabelCliNombre)
+                .addGap(18, 18, 18)
+                .addComponent(LabelCliApellido)
+                .addGap(18, 18, 18)
+                .addComponent(LabelCliCorreo)
+                .addGap(18, 18, 18)
+                .addComponent(LabelCliTelefono)
+                .addGap(18, 18, 18)
+                .addComponent(LabelCliDireccion)
+                .addGap(18, 18, 18)
+                .addComponent(LabelCliSector)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -367,27 +444,27 @@ public class Ver_Facturas extends javax.swing.JFrame {
         FacturaInfo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel26.setBackground(new java.awt.Color(53, 57, 88));
-        jLabel26.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(53, 57, 88));
         jLabel26.setText("Factura");
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(64, 64, 64));
         jLabel2.setText("Factura");
 
-        LabelFacFecha.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelFacFecha.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelFacFecha.setForeground(new java.awt.Color(64, 64, 64));
         LabelFacFecha.setText("Fecha");
 
-        LabelFacMonto.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelFacMonto.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelFacMonto.setForeground(new java.awt.Color(64, 64, 64));
         LabelFacMonto.setText("Monto");
 
-        LabelFacEstado.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelFacEstado.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelFacEstado.setForeground(new java.awt.Color(64, 64, 64));
         LabelFacEstado.setText("Estado");
 
-        LabelFacSucursal.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelFacSucursal.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelFacSucursal.setForeground(new java.awt.Color(64, 64, 64));
         LabelFacSucursal.setText("Sucursal");
 
@@ -395,33 +472,33 @@ public class Ver_Facturas extends javax.swing.JFrame {
         FacturaInfo.setLayout(FacturaInfoLayout);
         FacturaInfoLayout.setHorizontalGroup(
             FacturaInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FacturaInfoLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+            .addGroup(FacturaInfoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(FacturaInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel26)
-                    .addGroup(FacturaInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(LabelFacSucursal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelFacEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelFacMonto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LabelFacFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelFacMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelFacFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelFacEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelFacSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         FacturaInfoLayout.setVerticalGroup(
             FacturaInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FacturaInfoLayout.createSequentialGroup()
-                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelFacFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelFacMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelFacEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelFacSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jLabel26)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(LabelFacFecha)
+                .addGap(18, 18, 18)
+                .addComponent(LabelFacMonto)
+                .addGap(18, 18, 18)
+                .addComponent(LabelFacEstado)
+                .addGap(18, 18, 18)
+                .addComponent(LabelFacSucursal)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         Info.add(FacturaInfo);
@@ -430,27 +507,27 @@ public class Ver_Facturas extends javax.swing.JFrame {
         VendedorInfo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel27.setBackground(new java.awt.Color(53, 57, 88));
-        jLabel27.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(53, 57, 88));
         jLabel27.setText("Vendedor");
 
-        LabelVenNombre.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelVenNombre.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelVenNombre.setForeground(new java.awt.Color(64, 64, 64));
         LabelVenNombre.setText("Nombre");
 
-        LabelVenApellido.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelVenApellido.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelVenApellido.setForeground(new java.awt.Color(64, 64, 64));
         LabelVenApellido.setText("Apellido");
 
-        LabelVenCedula.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelVenCedula.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelVenCedula.setForeground(new java.awt.Color(64, 64, 64));
         LabelVenCedula.setText("Cedula");
 
-        LabelVenCorreo.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelVenCorreo.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelVenCorreo.setForeground(new java.awt.Color(64, 64, 64));
         LabelVenCorreo.setText("Correo");
 
-        LabelVenTelefono.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LabelVenTelefono.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelVenTelefono.setForeground(new java.awt.Color(64, 64, 64));
         LabelVenTelefono.setText("Telefono");
 
@@ -459,35 +536,37 @@ public class Ver_Facturas extends javax.swing.JFrame {
         VendedorInfoLayout.setHorizontalGroup(
             VendedorInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VendedorInfoLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(VendedorInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(LabelVenTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LabelVenCorreo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LabelVenCedula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LabelVenApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LabelVenNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                .addContainerGap()
+                .addGroup(VendedorInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelVenNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelVenApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelVenCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelVenCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelVenTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         VendedorInfoLayout.setVerticalGroup(
             VendedorInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VendedorInfoLayout.createSequentialGroup()
-                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LabelVenNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelVenApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelVenCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelVenCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelVenTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jLabel27)
+                .addGap(18, 18, 18)
+                .addComponent(LabelVenNombre)
+                .addGap(18, 18, 18)
+                .addComponent(LabelVenApellido)
+                .addGap(18, 18, 18)
+                .addComponent(LabelVenCedula)
+                .addGap(18, 18, 18)
+                .addComponent(LabelVenCorreo)
+                .addGap(18, 18, 18)
+                .addComponent(LabelVenTelefono)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         Info.add(VendedorInfo);
 
-        PanelVer.add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 1110, 265));
+        PanelVer.add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 1110, 320));
 
         Tablas.setBackground(new java.awt.Color(53, 57, 88));
         Tablas.setLayout(new java.awt.GridLayout(1, 0, 5, 5));
@@ -522,133 +601,10 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
         Tablas.add(jScrollPane1);
 
-        PanelVer.add(Tablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, 1110, 331));
-
-        PanelBsucar.setBackground(new java.awt.Color(246, 246, 230));
-        PanelBsucar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        CBFactura.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        CBFactura.setForeground(new java.awt.Color(64, 64, 64));
-        CBFactura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBFacturaActionPerformed(evt);
-            }
-        });
-
-        CBCedula.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        CBCedula.setForeground(new java.awt.Color(64, 64, 64));
-        CBCedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBCedulaActionPerformed(evt);
-            }
-        });
-
-        jButton5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(53, 57, 88));
-        jButton5.setText("Refrescar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        TFNombreBuscado.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        TFNombreBuscado.setForeground(new java.awt.Color(64, 64, 64));
-        TFNombreBuscado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFNombreBuscadoActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(53, 57, 88));
-        jLabel13.setText("Filtrar por Nombre");
-
-        jLabel14.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(53, 57, 88));
-        jLabel14.setText("Filtrar por Cedula");
-
-        TFCedulaBuscado.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        TFCedulaBuscado.setForeground(new java.awt.Color(64, 64, 64));
-        TFCedulaBuscado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFCedulaBuscadoActionPerformed(evt);
-            }
-        });
-
-        jLabel19.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(53, 57, 88));
-        jLabel19.setText("Cedula");
-
-        jLabel20.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(53, 57, 88));
-        jLabel20.setText("Numero de Factura");
-
-        javax.swing.GroupLayout PanelBsucarLayout = new javax.swing.GroupLayout(PanelBsucar);
-        PanelBsucar.setLayout(PanelBsucarLayout);
-        PanelBsucarLayout.setHorizontalGroup(
-            PanelBsucarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelBsucarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelBsucarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelBsucarLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(PanelBsucarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBsucarLayout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(52, 52, 52))
-                            .addGroup(PanelBsucarLayout.createSequentialGroup()
-                                .addGroup(PanelBsucarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PanelBsucarLayout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(jLabel13))
-                                    .addComponent(jLabel20))
-                                .addGap(41, 41, 41))))
-                    .addGroup(PanelBsucarLayout.createSequentialGroup()
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(PanelBsucarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(PanelBsucarLayout.createSequentialGroup()
-                        .addGroup(PanelBsucarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(CBFactura, 0, 178, Short.MAX_VALUE)
-                            .addComponent(CBCedula, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(TFCedulaBuscado)
-                    .addComponent(TFNombreBuscado))
-                .addGap(589, 589, 589))
-        );
-        PanelBsucarLayout.setVerticalGroup(
-            PanelBsucarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelBsucarLayout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(PanelBsucarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TFNombreBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelBsucarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(TFCedulaBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PanelBsucarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelBsucarLayout.createSequentialGroup()
-                        .addGroup(PanelBsucarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(CBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(PanelBsucarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CBFactura)
-                            .addComponent(jLabel20))
-                        .addGap(41, 41, 41))
-                    .addGroup(PanelBsucarLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-
-        PanelVer.add(PanelBsucar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 1110, 150));
+        PanelVer.add(Tablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 520, 1110, 331));
 
         BTDevolucion.setBackground(new java.awt.Color(232, 232, 232));
+        BTDevolucion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         BTDevolucion.setForeground(new java.awt.Color(64, 64, 64));
         BTDevolucion.setText("Devolucion o Anulacion");
         BTDevolucion.addActionListener(new java.awt.event.ActionListener() {
@@ -656,7 +612,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 BTDevolucionActionPerformed(evt);
             }
         });
-        PanelVer.add(BTDevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 810, 170, 30));
+        PanelVer.add(BTDevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 870, 300, 30));
 
         Panel_Principal.add(PanelVer, "card2");
 
@@ -666,13 +622,400 @@ public class Ver_Facturas extends javax.swing.JFrame {
         Panel_Ingreso.setPreferredSize(new java.awt.Dimension(1920, 1080));
         Panel_Ingreso.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        PanelInteractuar.setBackground(new java.awt.Color(53, 57, 88));
+        PanelInteractuar.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
+
+        jPanel5.setBackground(new java.awt.Color(246, 246, 230));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        TFNombre.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        TFNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFNombreActionPerformed(evt);
+            }
+        });
+        jPanel5.add(TFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 175, -1));
+
+        CBCedulaBuscar.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        CBCedulaBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cedula" }));
+        CBCedulaBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBCedulaBuscarActionPerformed(evt);
+            }
+        });
+        jPanel5.add(CBCedulaBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 175, -1));
+
+        BTCrearCliente.setBackground(new java.awt.Color(232, 232, 232));
+        BTCrearCliente.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        BTCrearCliente.setForeground(new java.awt.Color(64, 64, 64));
+        BTCrearCliente.setText("Crear Cliente");
+        BTCrearCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTCrearClienteActionPerformed(evt);
+            }
+        });
+        jPanel5.add(BTCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, 175, 22));
+
+        CBSucursal.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        CBSucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sucursal" }));
+        CBSucursal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBSucursalActionPerformed(evt);
+            }
+        });
+        jPanel5.add(CBSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 175, -1));
+
+        ClienteInformacionIngresoFactura.setBackground(new java.awt.Color(84, 102, 142));
+        ClienteInformacionIngresoFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ClienteInformacionIngresoFactura.setDoubleBuffered(false);
+
+        LabelCliCiudad1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        LabelCliCiudad1.setForeground(new java.awt.Color(232, 232, 232));
+        LabelCliCiudad1.setText("Ciudad");
+
+        LabelCliNombre1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        LabelCliNombre1.setForeground(new java.awt.Color(232, 232, 232));
+        LabelCliNombre1.setText("Nombre");
+
+        LabelCliApellido1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        LabelCliApellido1.setForeground(new java.awt.Color(232, 232, 232));
+        LabelCliApellido1.setText("Apellido");
+
+        LabelCliCorreo1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        LabelCliCorreo1.setForeground(new java.awt.Color(232, 232, 232));
+        LabelCliCorreo1.setText("Correo");
+
+        LabelCliTelefono1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        LabelCliTelefono1.setForeground(new java.awt.Color(232, 232, 232));
+        LabelCliTelefono1.setText("Telefono");
+
+        LabelCliDireccion1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        LabelCliDireccion1.setForeground(new java.awt.Color(232, 232, 232));
+        LabelCliDireccion1.setText("Direccion");
+
+        LabelCliSector1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        LabelCliSector1.setForeground(new java.awt.Color(232, 232, 232));
+        LabelCliSector1.setText("Sector");
+
+        javax.swing.GroupLayout ClienteInformacionIngresoFacturaLayout = new javax.swing.GroupLayout(ClienteInformacionIngresoFactura);
+        ClienteInformacionIngresoFactura.setLayout(ClienteInformacionIngresoFacturaLayout);
+        ClienteInformacionIngresoFacturaLayout.setHorizontalGroup(
+            ClienteInformacionIngresoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ClienteInformacionIngresoFacturaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ClienteInformacionIngresoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelCliCiudad1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelCliNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelCliApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelCliCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelCliTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelCliDireccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelCliSector1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(132, Short.MAX_VALUE))
+        );
+        ClienteInformacionIngresoFacturaLayout.setVerticalGroup(
+            ClienteInformacionIngresoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ClienteInformacionIngresoFacturaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LabelCliCiudad1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelCliNombre1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelCliApellido1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelCliCorreo1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelCliTelefono1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelCliDireccion1)
+                .addGap(12, 12, 12)
+                .addComponent(LabelCliSector1)
+                .addGap(12, 12, 12))
+        );
+
+        jPanel5.add(ClienteInformacionIngresoFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 360, 180));
+
+        TFClienteBuscarCedula.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        TFClienteBuscarCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFClienteBuscarCedulaActionPerformed(evt);
+            }
+        });
+        jPanel5.add(TFClienteBuscarCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 175, -1));
+
+        jLabel17.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel17.setText("Filtrar Por Nombre");
+        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel18.setText("Filtrar Por Cedula");
+        jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+
+        jLabel21.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel21.setText("Cedula");
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel22.setText("Sucursal");
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+
+        jLabel28.setBackground(new java.awt.Color(53, 57, 88));
+        jLabel28.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel28.setText("Cliente");
+        jPanel5.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 100, 20));
+
+        PanelInteractuar.add(jPanel5);
+
+        PanelCrearCliente.setBackground(new java.awt.Color(246, 246, 230));
+        PanelCrearCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        PanelCrearCliente.setForeground(new java.awt.Color(64, 64, 64));
+        PanelCrearCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        TFIngresoCedula.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        PanelCrearCliente.add(TFIngresoCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 250, -1));
+
+        CBProvincia.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        CBProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PROVINCIA" }));
+        CBProvincia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBProvinciaActionPerformed(evt);
+            }
+        });
+        PanelCrearCliente.add(CBProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 170, -1));
+
+        CBCiudad.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        CBCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CIUDAD" }));
+        CBCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBCiudadActionPerformed(evt);
+            }
+        });
+        PanelCrearCliente.add(CBCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 170, -1));
+
+        TFIngresoNombre.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        PanelCrearCliente.add(TFIngresoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 250, -1));
+
+        jLabel6.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel6.setText("Cedula");
+        PanelCrearCliente.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel7.setText("Nombre");
+        PanelCrearCliente.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel8.setText("Apellido");
+        PanelCrearCliente.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+
+        TFIngresoApellido.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        PanelCrearCliente.add(TFIngresoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 250, -1));
+
+        jLabel9.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel9.setText("Correo");
+        PanelCrearCliente.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel10.setText("Telefono");
+        PanelCrearCliente.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel11.setText("Direccion");
+        PanelCrearCliente.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel12.setText("Sector");
+        PanelCrearCliente.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+
+        TFIngresoCorreo.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        PanelCrearCliente.add(TFIngresoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 250, -1));
+
+        TFIngresoTelefono.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        PanelCrearCliente.add(TFIngresoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 250, -1));
+
+        TFIngresoDireccion.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        PanelCrearCliente.add(TFIngresoDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 250, -1));
+
+        TFIngresoSector.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        PanelCrearCliente.add(TFIngresoSector, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 250, -1));
+
+        jButton1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jButton1.setText("Crear Cliente");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        PanelCrearCliente.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, -1));
+
+        BTCancelarCliente.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        BTCancelarCliente.setText("Cancelar");
+        BTCancelarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTCancelarClienteActionPerformed(evt);
+            }
+        });
+        PanelCrearCliente.add(BTCancelarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 120, -1));
+
+        jLabel4.setBackground(new java.awt.Color(53, 57, 88));
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel4.setText("Nuevo Cliente");
+        PanelCrearCliente.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, 20));
+
+        PanelInteractuar.add(PanelCrearCliente);
+
+        jPanel6.setBackground(new java.awt.Color(246, 246, 230));
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        CBCedulaVendedoresIngreso.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        CBCedulaVendedoresIngreso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cedula Vendedor" }));
+        CBCedulaVendedoresIngreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBCedulaVendedoresIngresoActionPerformed(evt);
+            }
+        });
+        jPanel6.add(CBCedulaVendedoresIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 210, 31));
+
+        TFNombreVendedor.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        TFNombreVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFNombreVendedorActionPerformed(evt);
+            }
+        });
+        jPanel6.add(TFNombreVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 210, -1));
+
+        jPanel7.setBackground(new java.awt.Color(84, 102, 142));
+        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        LabelVenNombre1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        LabelVenNombre1.setForeground(new java.awt.Color(232, 232, 232));
+        LabelVenNombre1.setText("Nombre");
+
+        LabelVenApellido1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        LabelVenApellido1.setForeground(new java.awt.Color(232, 232, 232));
+        LabelVenApellido1.setText("Apellido");
+
+        LabelVenCedula1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        LabelVenCedula1.setForeground(new java.awt.Color(232, 232, 232));
+        LabelVenCedula1.setText("Cedula");
+
+        LabelVenCorreo1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        LabelVenCorreo1.setForeground(new java.awt.Color(232, 232, 232));
+        LabelVenCorreo1.setText("Correo");
+
+        LabelVenTelefono1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        LabelVenTelefono1.setForeground(new java.awt.Color(232, 232, 232));
+        LabelVenTelefono1.setText("Telefono");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(LabelVenCorreo1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LabelVenCedula1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LabelVenApellido1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LabelVenNombre1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LabelVenTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(166, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(LabelVenNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(LabelVenApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(LabelVenCedula1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(LabelVenCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(LabelVenTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel6.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 390, -1));
+
+        jLabel15.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel15.setText("Filtrar Por Nombre");
+        jPanel6.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 66, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel16.setText("Filtrar Por Cedula");
+        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 104, -1, -1));
+
+        TFBsucarCedulaV.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        TFBsucarCedulaV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFBsucarCedulaVActionPerformed(evt);
+            }
+        });
+        jPanel6.add(TFBsucarCedulaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 210, -1));
+
+        jLabel23.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(64, 64, 64));
+        jLabel23.setText("Cedula Venedor");
+        jPanel6.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 143, -1, -1));
+
+        jLabel5.setBackground(new java.awt.Color(53, 57, 88));
+        jLabel5.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel5.setText("Vendedor");
+        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, 19));
+
+        PanelInteractuar.add(jPanel6);
+
+        Panel_Ingreso.add(PanelInteractuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 6, 1310, 430));
+
+        PanelBotones.setBackground(new java.awt.Color(53, 57, 88));
+        PanelBotones.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
+
+        BTCrearFactura.setBackground(new java.awt.Color(232, 232, 232));
+        BTCrearFactura.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        BTCrearFactura.setForeground(new java.awt.Color(64, 64, 64));
+        BTCrearFactura.setText("CREAR FACTURA");
+        BTCrearFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTCrearFacturaActionPerformed(evt);
+            }
+        });
+        PanelBotones.add(BTCrearFactura);
+
+        CANCELAR.setBackground(new java.awt.Color(232, 232, 232));
+        CANCELAR.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        CANCELAR.setForeground(new java.awt.Color(64, 64, 64));
+        CANCELAR.setText("CANCELAR");
+        CANCELAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CANCELARActionPerformed(evt);
+            }
+        });
+        PanelBotones.add(CANCELAR);
+
+        Panel_Ingreso.add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 1310, 41));
+
         PanelDetalleFactura.setBackground(new java.awt.Color(246, 246, 230));
         PanelDetalleFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         PanelAgregarProductos.setBackground(new java.awt.Color(84, 102, 142));
         PanelAgregarProductos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        CBCat.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        CBCat.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         CBCat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria" }));
         CBCat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -680,7 +1023,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
             }
         });
 
-        TFProductoenCategoria.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        TFProductoenCategoria.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         TFProductoenCategoria.setText("Buscar en Categoria");
         TFProductoenCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -688,7 +1031,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
             }
         });
 
-        CBProductos.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        CBProductos.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         CBProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Producto" }));
         CBProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -696,7 +1039,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
             }
         });
 
-        TFProducto.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        TFProducto.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         TFProducto.setText("Buscar en Productos");
         TFProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -704,7 +1047,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
             }
         });
 
-        CBCantidad.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        CBCantidad.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         CBCantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cantidad" }));
         CBCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -712,16 +1055,16 @@ public class Ver_Facturas extends javax.swing.JFrame {
             }
         });
 
-        LabelPrecioUnitario.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        LabelPrecioUnitario.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelPrecioUnitario.setForeground(new java.awt.Color(232, 232, 232));
         LabelPrecioUnitario.setText("PRECIO");
 
-        LabelPrecioTotal.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        LabelPrecioTotal.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelPrecioTotal.setForeground(new java.awt.Color(232, 232, 232));
         LabelPrecioTotal.setText("SUBTOTAL");
 
         jButton3.setBackground(new java.awt.Color(232, 232, 232));
-        jButton3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(64, 64, 64));
         jButton3.setText("Agregar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -731,7 +1074,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         });
 
         jButton7.setBackground(new java.awt.Color(232, 232, 232));
-        jButton7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jButton7.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jButton7.setForeground(new java.awt.Color(64, 64, 64));
         jButton7.setText("Seguir a Pago");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -745,24 +1088,21 @@ public class Ver_Facturas extends javax.swing.JFrame {
         PanelAgregarProductosLayout.setHorizontalGroup(
             PanelAgregarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelAgregarProductosLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(PanelAgregarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelPrecioUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CBCat, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CBCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CBProductos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TFProducto)
+                    .addComponent(TFProductoenCategoria)
                     .addGroup(PanelAgregarProductosLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(PanelAgregarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(LabelPrecioUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PanelAgregarProductosLayout.createSequentialGroup()
-                                .addComponent(LabelPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3))
-                            .addComponent(CBCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CBCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TFProducto)
-                            .addComponent(TFProductoenCategoria)
-                            .addComponent(CBProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(PanelAgregarProductosLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addGroup(PanelAgregarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton3)
+                            .addComponent(LabelPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton7)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
         PanelAgregarProductosLayout.setVerticalGroup(
             PanelAgregarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -773,19 +1113,19 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 .addComponent(CBProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TFProductoenCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(TFProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CBCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LabelPrecioUnitario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LabelPrecioTotal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelAgregarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabelPrecioTotal)
+                    .addComponent(jButton7)
                     .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton7)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         TableDetalle_Factura_Insercion.setAutoCreateRowSorter(true);
@@ -810,13 +1150,18 @@ public class Ver_Facturas extends javax.swing.JFrame {
         PanelFormasPago.setBackground(new java.awt.Color(84, 102, 142));
         PanelFormasPago.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        CBFormaPago.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        CBFormaPago.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         CBFormaPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FormaP de PAGO" }));
+        CBFormaPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBFormaPagoActionPerformed(evt);
+            }
+        });
 
-        TFCantidad.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        TFCantidad.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
 
         BTPagar.setBackground(new java.awt.Color(232, 232, 232));
-        BTPagar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        BTPagar.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         BTPagar.setForeground(new java.awt.Color(64, 64, 64));
         BTPagar.setText("Pagar");
         BTPagar.addActionListener(new java.awt.event.ActionListener() {
@@ -825,7 +1170,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jButton6.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jButton6.setText("Agregar Forma de Pago");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -851,31 +1196,33 @@ public class Ver_Facturas extends javax.swing.JFrame {
         PanelFormasPagoLayout.setHorizontalGroup(
             PanelFormasPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelFormasPagoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelFormasPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(CBFormaPago, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TFCantidad)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BTPagar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addGroup(PanelFormasPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CBFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TFCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6)
+                    .addGroup(PanelFormasPagoLayout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(BTPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         PanelFormasPagoLayout.setVerticalGroup(
             PanelFormasPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelFormasPagoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PanelFormasPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(PanelFormasPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PanelFormasPagoLayout.createSequentialGroup()
                         .addComponent(CBFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                         .addComponent(TFCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTPagar)))
-                .addGap(74, 74, 74))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BTPagar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout PanelDetalleFacturaLayout = new javax.swing.GroupLayout(PanelDetalleFactura);
@@ -883,519 +1230,35 @@ public class Ver_Facturas extends javax.swing.JFrame {
         PanelDetalleFacturaLayout.setHorizontalGroup(
             PanelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDetalleFacturaLayout.createSequentialGroup()
+                .addContainerGap(94, Short.MAX_VALUE)
                 .addGroup(PanelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelDetalleFacturaLayout.createSequentialGroup()
-                        .addGap(476, 476, 476)
-                        .addComponent(LabelFAC))
-                    .addGroup(PanelDetalleFacturaLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(PanelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PanelFormasPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PanelDetalleFacturaLayout.createSequentialGroup()
-                                .addComponent(PanelAgregarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(80, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDetalleFacturaLayout.createSequentialGroup()
+                        .addComponent(PanelAgregarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDetalleFacturaLayout.createSequentialGroup()
+                        .addComponent(LabelFAC)
+                        .addGap(586, 586, 586))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDetalleFacturaLayout.createSequentialGroup()
+                        .addComponent(PanelFormasPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(102, 102, 102))))
         );
         PanelDetalleFacturaLayout.setVerticalGroup(
             PanelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDetalleFacturaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(LabelFAC)
+                .addComponent(LabelFAC, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PanelAgregarProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(PanelFormasPago, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGroup(PanelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelAgregarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelFormasPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        Panel_Ingreso.add(PanelDetalleFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 457, 1100, -1));
-
-        PanelInteractuar.setBackground(new java.awt.Color(53, 57, 88));
-        PanelInteractuar.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
-
-        jPanel5.setBackground(new java.awt.Color(246, 246, 230));
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        TFNombre.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        TFNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFNombreActionPerformed(evt);
-            }
-        });
-        jPanel5.add(TFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 175, -1));
-
-        CBCedulaBuscar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        CBCedulaBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cedula" }));
-        CBCedulaBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBCedulaBuscarActionPerformed(evt);
-            }
-        });
-        jPanel5.add(CBCedulaBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 175, -1));
-
-        BTCrearCliente.setBackground(new java.awt.Color(232, 232, 232));
-        BTCrearCliente.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        BTCrearCliente.setForeground(new java.awt.Color(64, 64, 64));
-        BTCrearCliente.setText("Crear Cliente");
-        BTCrearCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTCrearClienteActionPerformed(evt);
-            }
-        });
-        jPanel5.add(BTCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 360, 175, 22));
-
-        CBSucursal.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        CBSucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sucursal" }));
-        CBSucursal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBSucursalActionPerformed(evt);
-            }
-        });
-        jPanel5.add(CBSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 175, -1));
-
-        ClienteInformacionIngresoFactura.setBackground(new java.awt.Color(84, 102, 142));
-        ClienteInformacionIngresoFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        ClienteInformacionIngresoFactura.setDoubleBuffered(false);
-
-        LabelCliCiudad1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        LabelCliCiudad1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelCliCiudad1.setText("Ciudad");
-
-        LabelCliNombre1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        LabelCliNombre1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelCliNombre1.setText("Nombre");
-
-        LabelCliApellido1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        LabelCliApellido1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelCliApellido1.setText("Apellido");
-
-        LabelCliCorreo1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        LabelCliCorreo1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelCliCorreo1.setText("Correo");
-
-        LabelCliTelefono1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        LabelCliTelefono1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelCliTelefono1.setText("Telefono");
-
-        LabelCliDireccion1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        LabelCliDireccion1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelCliDireccion1.setText("Direccion");
-
-        LabelCliSector1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        LabelCliSector1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelCliSector1.setText("Sector");
-
-        javax.swing.GroupLayout ClienteInformacionIngresoFacturaLayout = new javax.swing.GroupLayout(ClienteInformacionIngresoFactura);
-        ClienteInformacionIngresoFactura.setLayout(ClienteInformacionIngresoFacturaLayout);
-        ClienteInformacionIngresoFacturaLayout.setHorizontalGroup(
-            ClienteInformacionIngresoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ClienteInformacionIngresoFacturaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ClienteInformacionIngresoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelCliCiudad1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelCliNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelCliApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelCliCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelCliTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelCliDireccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelCliSector1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-        ClienteInformacionIngresoFacturaLayout.setVerticalGroup(
-            ClienteInformacionIngresoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ClienteInformacionIngresoFacturaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(LabelCliCiudad1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(LabelCliNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(LabelCliApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(LabelCliCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(LabelCliTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(LabelCliDireccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(LabelCliSector1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel5.add(ClienteInformacionIngresoFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
-
-        TFClienteBuscarCedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFClienteBuscarCedulaActionPerformed(evt);
-            }
-        });
-        jPanel5.add(TFClienteBuscarCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 175, -1));
-
-        jLabel17.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel17.setText("Filtrar Por Nombre");
-        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
-
-        jLabel18.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel18.setText("Filtrar Por Cedula");
-        jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
-
-        jLabel21.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel21.setText("Cedula");
-        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
-
-        jLabel22.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel22.setText("Sucursal");
-        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
-
-        jLabel28.setBackground(new java.awt.Color(53, 57, 88));
-        jLabel28.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel28.setText("Cliente");
-        jPanel5.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 120, 20));
-
-        PanelInteractuar.add(jPanel5);
-
-        PanelCrearCliente.setBackground(new java.awt.Color(246, 246, 230));
-        PanelCrearCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        PanelCrearCliente.setForeground(new java.awt.Color(64, 64, 64));
-
-        TFIngresoCedula.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-
-        CBProvincia.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        CBProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PROVINCIA" }));
-        CBProvincia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBProvinciaActionPerformed(evt);
-            }
-        });
-
-        CBCiudad.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        CBCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CIUDAD" }));
-
-        TFIngresoNombre.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-
-        jLabel6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel6.setText("Cedula");
-
-        jLabel7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel7.setText("Nombre");
-
-        jLabel8.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel8.setText("Apellido");
-
-        TFIngresoApellido.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-
-        jLabel9.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel9.setText("Correo");
-
-        jLabel10.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel10.setText("Telefono");
-
-        jLabel11.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel11.setText("Direccion");
-
-        jLabel12.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel12.setText("Sector");
-
-        TFIngresoCorreo.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-
-        TFIngresoTelefono.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-
-        TFIngresoDireccion.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-
-        TFIngresoSector.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
-
-        jButton1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton1.setText("Crear Cliente");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        BTCancelarCliente.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        BTCancelarCliente.setText("Cancelar");
-        BTCancelarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTCancelarClienteActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setBackground(new java.awt.Color(53, 57, 88));
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel4.setText("Nuevo Cliente");
-
-        javax.swing.GroupLayout PanelCrearClienteLayout = new javax.swing.GroupLayout(PanelCrearCliente);
-        PanelCrearCliente.setLayout(PanelCrearClienteLayout);
-        PanelCrearClienteLayout.setHorizontalGroup(
-            PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCrearClienteLayout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
-                .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(PanelCrearClienteLayout.createSequentialGroup()
-                        .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel6))
-                        .addGap(32, 32, 32)
-                        .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TFIngresoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(TFIngresoDireccion)
-                                .addComponent(TFIngresoApellido)
-                                .addComponent(TFIngresoCorreo)
-                                .addComponent(TFIngresoTelefono)
-                                .addComponent(TFIngresoNombre)
-                                .addComponent(TFIngresoSector, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(PanelCrearClienteLayout.createSequentialGroup()
-                        .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addComponent(CBProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CBCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BTCancelarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(37, 37, 37))
-            .addGroup(PanelCrearClienteLayout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addComponent(jLabel4)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        PanelCrearClienteLayout.setVerticalGroup(
-            PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCrearClienteLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TFIngresoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TFIngresoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(TFIngresoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(TFIngresoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(TFIngresoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(TFIngresoDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(TFIngresoSector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CBProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CBCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PanelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(BTCancelarCliente))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
-
-        PanelInteractuar.add(PanelCrearCliente);
-
-        jPanel6.setBackground(new java.awt.Color(246, 246, 230));
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        CBCedulaVendedoresIngreso.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        CBCedulaVendedoresIngreso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cedula Vendedor" }));
-        CBCedulaVendedoresIngreso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBCedulaVendedoresIngresoActionPerformed(evt);
-            }
-        });
-
-        TFNombreVendedor.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        TFNombreVendedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFNombreVendedorActionPerformed(evt);
-            }
-        });
-
-        jPanel7.setBackground(new java.awt.Color(84, 102, 142));
-        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        LabelVenNombre1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        LabelVenNombre1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelVenNombre1.setText("Nombre");
-
-        LabelVenApellido1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        LabelVenApellido1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelVenApellido1.setText("Apellido");
-
-        LabelVenCedula1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        LabelVenCedula1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelVenCedula1.setText("Cedula");
-
-        LabelVenCorreo1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        LabelVenCorreo1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelVenCorreo1.setText("Correo");
-
-        LabelVenTelefono1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        LabelVenTelefono1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelVenTelefono1.setText("Telefono");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(LabelVenCorreo1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LabelVenCedula1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LabelVenApellido1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LabelVenNombre1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LabelVenTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(LabelVenNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelVenApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelVenCedula1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelVenCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelVenTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jLabel15.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel15.setText("Filtrar Por Nombre");
-
-        jLabel16.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel16.setText("Filtrar Por Cedula");
-
-        TFBsucarCedulaV.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        TFBsucarCedulaV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFBsucarCedulaVActionPerformed(evt);
-            }
-        });
-
-        jLabel23.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel23.setText("Cedula Venedor");
-
-        jLabel5.setBackground(new java.awt.Color(53, 57, 88));
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        jLabel5.setText("Vendedor");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel23)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CBCedulaVendedoresIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel16))
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(TFBsucarCedulaV, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TFNombreVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22))))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jLabel5)))
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TFNombreVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(TFBsucarCedulaV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CBCedulaVendedoresIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
-
-        PanelInteractuar.add(jPanel6);
-
-        Panel_Ingreso.add(PanelInteractuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 6, -1, -1));
-
-        PanelBotones.setBackground(new java.awt.Color(53, 57, 88));
-        PanelBotones.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
-
-        BTCrearFactura.setBackground(new java.awt.Color(232, 232, 232));
-        BTCrearFactura.setForeground(new java.awt.Color(64, 64, 64));
-        BTCrearFactura.setText("CREAR FACTURA");
-        BTCrearFactura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTCrearFacturaActionPerformed(evt);
-            }
-        });
-        PanelBotones.add(BTCrearFactura);
-
-        CANCELAR.setBackground(new java.awt.Color(232, 232, 232));
-        CANCELAR.setForeground(new java.awt.Color(64, 64, 64));
-        CANCELAR.setText("CANCELAR");
-        CANCELAR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CANCELARActionPerformed(evt);
-            }
-        });
-        PanelBotones.add(CANCELAR);
-
-        Panel_Ingreso.add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 410, 1100, 41));
+        Panel_Ingreso.add(PanelDetalleFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 500, 1310, 570));
 
         Panel_Principal.add(Panel_Ingreso, "card3");
 
@@ -1922,6 +1785,14 @@ public class Ver_Facturas extends javax.swing.JFrame {
         // TODO add your handling code here:
         CBCedula.setModel(db.ListadoComplejo("SELECT C.CLI_CEDULA_RUC FROM CLIENTE C INNER JOIN FACTURA F ON C.CLI_CEDULA_RUC=F.CLI_CEDULA_RUC WHERE C.CLI_CEDULA_RUC LIKE '"+TFCedulaBuscado.getText().toUpperCase()+ "%'GROUP BY C.CLI_CEDULA_RUC"));
     }//GEN-LAST:event_TFCedulaBuscadoActionPerformed
+
+    private void CBCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBCiudadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBCiudadActionPerformed
+
+    private void CBFormaPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBFormaPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBFormaPagoActionPerformed
     public void RefrescarVer()
     {
         CBCedula.setModel(db.ListadoComplejo("SELECT C.CLI_CEDULA_RUC FROM CLIENTE C INNER JOIN FACTURA F ON C.CLI_CEDULA_RUC=F.CLI_CEDULA_RUC GROUP BY C.CLI_CEDULA_RUC"));
