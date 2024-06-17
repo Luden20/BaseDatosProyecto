@@ -17,8 +17,14 @@ public class Ver_Facturas extends javax.swing.JFrame {
     /**
      * Creates new form Ver_Facturas
      */
-    public Ver_Facturas() {
+    public Ver_Facturas(String Cedula) {
         initComponents();
+                //db=new ConexionOracle("172.16.6.193","cdb1","achafla","achafla");
+        //db=new ConexionOracle("25.66.186.128","cdb1","achafla","achafla");
+        db=new ConexionOracle("172.16.0.183","cdb1","achafla","achafla");
+        IDVendedor=Cedula;
+        IDSucursal=db.get("SELECT SUC_CODIGO FROM VENDEDOR WHERE VEN_CEDULA_RUC='"+Cedula+"'");
+        LBVendedor.setText(db.get("SELECT VEN_NOMBRE FROM VENDEDOR WHERE VEN_CEDULA_RUC='"+Cedula+"'"));
         PanelDetalleFactura.setVisible(false);
         T=new DefaultTableModel();
         T2=new DefaultTableModel();
@@ -27,8 +33,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         Tabla_MetodosPago.setModel(T4);
         
         TableDetalle_Factura_Insercion.setModel(T2);
-        //db=new ConexionOracle("172.16.6.193","cdb1","achafla","achafla");
-        db=new ConexionOracle("25.66.186.128","cdb1","achafla","achafla");
         TablaFormasPago.setModel(T3);
         TABLA.setModel(T);
         
@@ -36,11 +40,28 @@ public class Ver_Facturas extends javax.swing.JFrame {
         TABLA.setVisible(false);
         
         CBCedulaBuscar.setModel(db.Listado("Cliente", "cli_cedula_ruc"));
-        CBSucursal.setModel(db.Listado("Sucursal", "suc_nombre"));
         CBProvincia.setModel(db.Listado( "PROVINCIA","PRV_NOMBRE"));
         PanelCrearCliente.setVisible(false);
         PanelFormasPago.setVisible(false);
         RefrescarVer();
+        String Comando="SELECT C.CAT_DESCRIPCION " +
+        "FROM PRODUCTO P " +
+        "INNER JOIN PRODUCTO_BODEGA PB " +
+        "ON P.PRD_CODIGO=PB.PRD_CODIGO " +
+        "INNER JOIN BODEGA B " +
+        "ON B.BOD_CODIGO=PB.BOD_CODIGO " +
+        "INNER JOIN SUCURSAL S " +
+        "ON S.SUC_CODIGO=B.SUC_CODIGO " +
+        "INNER JOIN CATEGORIA C ON C.CAT_CODIGO=P.CAT_CODIGO "+
+        "WHERE S.SUC_CODIGO='"+IDSucursal+"' " +
+        "GROUP BY C.CAT_DESCRIPCION " +
+        "ORDER BY C.CAT_DESCRIPCION";
+        System.out.println(Comando);
+        CBCat.setModel(db.ListadoComplejo(Comando));
+    }
+
+    private Ver_Facturas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -53,6 +74,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private void initComponents() {
 
         Botones = new javax.swing.JPanel();
+        LBVendedor = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         Panel_Principal = new javax.swing.JPanel();
@@ -67,37 +89,27 @@ public class Ver_Facturas extends javax.swing.JFrame {
         TFCedulaBuscado = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        TFFacturaBuscada = new javax.swing.JTextField();
+        CBFacturaBuscada = new javax.swing.JComboBox<>();
         Info = new javax.swing.JPanel();
-        GeneralInfo = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
-        Nombre = new javax.swing.JLabel();
-        Cedula_Vendedor = new javax.swing.JLabel();
-        Fecha_Factura = new javax.swing.JLabel();
-        Nombre_Vendedor = new javax.swing.JLabel();
-        Sucursal_Nombre = new javax.swing.JLabel();
         ClienteInformacionVerFactura = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
-        LabelCliCiudad = new javax.swing.JLabel();
         LabelCliNombre = new javax.swing.JLabel();
         LabelCliApellido = new javax.swing.JLabel();
-        LabelCliCorreo = new javax.swing.JLabel();
         LabelCliTelefono = new javax.swing.JLabel();
         LabelCliDireccion = new javax.swing.JLabel();
-        LabelCliSector = new javax.swing.JLabel();
         FacturaInfo = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         LabelFacFecha = new javax.swing.JLabel();
         LabelFacMonto = new javax.swing.JLabel();
-        LabelFacEstado = new javax.swing.JLabel();
         LabelFacSucursal = new javax.swing.JLabel();
         VendedorInfo = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         LabelVenNombre = new javax.swing.JLabel();
         LabelVenApellido = new javax.swing.JLabel();
         LabelVenCedula = new javax.swing.JLabel();
-        LabelVenCorreo = new javax.swing.JLabel();
-        LabelVenTelefono = new javax.swing.JLabel();
         Tablas = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         Tabla_MetodosPago = new javax.swing.JTable();
@@ -110,7 +122,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         TFNombre = new javax.swing.JTextField();
         CBCedulaBuscar = new javax.swing.JComboBox<>();
         BTCrearCliente = new javax.swing.JButton();
-        CBSucursal = new javax.swing.JComboBox<>();
         ClienteInformacionIngresoFactura = new javax.swing.JPanel();
         LabelCliCiudad1 = new javax.swing.JLabel();
         LabelCliNombre1 = new javax.swing.JLabel();
@@ -123,7 +134,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         PanelCrearCliente = new javax.swing.JPanel();
         TFIngresoCedula = new javax.swing.JTextField();
@@ -145,20 +155,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         BTCancelarCliente = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        CBCedulaVendedoresIngreso = new javax.swing.JComboBox<>();
-        TFNombreVendedor = new javax.swing.JTextField();
-        jPanel7 = new javax.swing.JPanel();
-        LabelVenNombre1 = new javax.swing.JLabel();
-        LabelVenApellido1 = new javax.swing.JLabel();
-        LabelVenCedula1 = new javax.swing.JLabel();
-        LabelVenCorreo1 = new javax.swing.JLabel();
-        LabelVenTelefono1 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        TFBsucarCedulaV = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         PanelBotones = new javax.swing.JPanel();
         BTCrearFactura = new javax.swing.JButton();
         CANCELAR = new javax.swing.JButton();
@@ -183,13 +179,18 @@ public class Ver_Facturas extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         TablaFormasPago = new javax.swing.JTable();
+        BTBorrarDetalleFactura = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.PAGE_AXIS));
 
-        Botones.setBackground(new java.awt.Color(84, 102, 142));
-        Botones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Botones.setBackground(new java.awt.Color(102, 102, 102));
+        Botones.setLayout(new javax.swing.BoxLayout(Botones, javax.swing.BoxLayout.LINE_AXIS));
+
+        LBVendedor.setForeground(new java.awt.Color(255, 255, 255));
+        LBVendedor.setText("Bienvenido ");
+        Botones.add(LBVendedor);
 
         jButton2.setBackground(new java.awt.Color(232, 232, 232));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -200,7 +201,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        Botones.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, -1));
+        Botones.add(jButton2);
 
         jButton4.setBackground(new java.awt.Color(232, 232, 232));
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -211,7 +212,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        Botones.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, -1));
+        Botones.add(jButton4);
 
         getContentPane().add(Botones);
 
@@ -290,73 +291,28 @@ public class Ver_Facturas extends javax.swing.JFrame {
         jLabel20.setText("Numero de Factura");
         PanelBsucar.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel1.setText("Buscar Factura");
+        PanelBsucar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
+
+        TFFacturaBuscada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFFacturaBuscadaActionPerformed(evt);
+            }
+        });
+        PanelBsucar.add(TFFacturaBuscada, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 200, 30));
+
+        CBFacturaBuscada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBFacturaBuscadaActionPerformed(evt);
+            }
+        });
+        PanelBsucar.add(CBFacturaBuscada, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, 200, 30));
+
         PanelVer.add(PanelBsucar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 1110, 170));
 
         Info.setBackground(new java.awt.Color(53, 57, 88));
         Info.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
-
-        GeneralInfo.setBackground(new java.awt.Color(246, 246, 230));
-        GeneralInfo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel24.setBackground(new java.awt.Color(53, 57, 88));
-        jLabel24.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(53, 57, 88));
-        jLabel24.setText("General");
-
-        Nombre.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        Nombre.setForeground(new java.awt.Color(64, 64, 64));
-        Nombre.setText("Nombre");
-
-        Cedula_Vendedor.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        Cedula_Vendedor.setForeground(new java.awt.Color(64, 64, 64));
-        Cedula_Vendedor.setText("Cedula Vendedor");
-
-        Fecha_Factura.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        Fecha_Factura.setForeground(new java.awt.Color(64, 64, 64));
-        Fecha_Factura.setText("Fecha FACTURA");
-
-        Nombre_Vendedor.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        Nombre_Vendedor.setForeground(new java.awt.Color(64, 64, 64));
-        Nombre_Vendedor.setText("Nombre Vendedor");
-
-        Sucursal_Nombre.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        Sucursal_Nombre.setForeground(new java.awt.Color(64, 64, 64));
-        Sucursal_Nombre.setText("Sucursal");
-
-        javax.swing.GroupLayout GeneralInfoLayout = new javax.swing.GroupLayout(GeneralInfo);
-        GeneralInfo.setLayout(GeneralInfoLayout);
-        GeneralInfoLayout.setHorizontalGroup(
-            GeneralInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(GeneralInfoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(GeneralInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cedula_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Fecha_Factura, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Nombre_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Sucursal_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        GeneralInfoLayout.setVerticalGroup(
-            GeneralInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(GeneralInfoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Nombre)
-                .addGap(18, 18, 18)
-                .addComponent(Cedula_Vendedor)
-                .addGap(18, 18, 18)
-                .addComponent(Fecha_Factura)
-                .addGap(18, 18, 18)
-                .addComponent(Nombre_Vendedor)
-                .addGap(18, 18, 18)
-                .addComponent(Sucursal_Nombre)
-                .addContainerGap(76, Short.MAX_VALUE))
-        );
-
-        Info.add(GeneralInfo);
 
         ClienteInformacionVerFactura.setBackground(new java.awt.Color(246, 246, 230));
         ClienteInformacionVerFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -366,10 +322,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         jLabel25.setForeground(new java.awt.Color(53, 57, 88));
         jLabel25.setText("Cliente");
 
-        LabelCliCiudad.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        LabelCliCiudad.setForeground(new java.awt.Color(64, 64, 64));
-        LabelCliCiudad.setText("Ciudad");
-
         LabelCliNombre.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelCliNombre.setForeground(new java.awt.Color(64, 64, 64));
         LabelCliNombre.setText("Nombre");
@@ -378,10 +330,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         LabelCliApellido.setForeground(new java.awt.Color(64, 64, 64));
         LabelCliApellido.setText("Apellido");
 
-        LabelCliCorreo.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        LabelCliCorreo.setForeground(new java.awt.Color(64, 64, 64));
-        LabelCliCorreo.setText("Correo");
-
         LabelCliTelefono.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelCliTelefono.setForeground(new java.awt.Color(64, 64, 64));
         LabelCliTelefono.setText("Telefono");
@@ -389,10 +337,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         LabelCliDireccion.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelCliDireccion.setForeground(new java.awt.Color(64, 64, 64));
         LabelCliDireccion.setText("Direccion");
-
-        LabelCliSector.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        LabelCliSector.setForeground(new java.awt.Color(64, 64, 64));
-        LabelCliSector.setText("Sector");
 
         javax.swing.GroupLayout ClienteInformacionVerFacturaLayout = new javax.swing.GroupLayout(ClienteInformacionVerFactura);
         ClienteInformacionVerFactura.setLayout(ClienteInformacionVerFacturaLayout);
@@ -404,16 +348,15 @@ public class Ver_Facturas extends javax.swing.JFrame {
                     .addGroup(ClienteInformacionVerFacturaLayout.createSequentialGroup()
                         .addGroup(ClienteInformacionVerFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelCliCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LabelCliNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LabelCliApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(61, Short.MAX_VALUE))
+                        .addContainerGap(64, Short.MAX_VALUE))
                     .addGroup(ClienteInformacionVerFacturaLayout.createSequentialGroup()
                         .addGroup(ClienteInformacionVerFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelCliCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelCliTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelCliDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelCliSector, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(ClienteInformacionVerFacturaLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(LabelCliTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(LabelCliDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         ClienteInformacionVerFacturaLayout.setVerticalGroup(
@@ -422,20 +365,14 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LabelCliCiudad)
-                .addGap(18, 18, 18)
                 .addComponent(LabelCliNombre)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LabelCliApellido)
-                .addGap(18, 18, 18)
-                .addComponent(LabelCliCorreo)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LabelCliTelefono)
                 .addGap(18, 18, 18)
                 .addComponent(LabelCliDireccion)
-                .addGap(18, 18, 18)
-                .addComponent(LabelCliSector)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         Info.add(ClienteInformacionVerFactura);
@@ -460,10 +397,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         LabelFacMonto.setForeground(new java.awt.Color(64, 64, 64));
         LabelFacMonto.setText("Monto");
 
-        LabelFacEstado.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        LabelFacEstado.setForeground(new java.awt.Color(64, 64, 64));
-        LabelFacEstado.setText("Estado");
-
         LabelFacSucursal.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelFacSucursal.setForeground(new java.awt.Color(64, 64, 64));
         LabelFacSucursal.setText("Sucursal");
@@ -479,26 +412,23 @@ public class Ver_Facturas extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelFacMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelFacFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelFacEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelFacSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         FacturaInfoLayout.setVerticalGroup(
             FacturaInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FacturaInfoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel26)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LabelFacFecha)
-                .addGap(18, 18, 18)
-                .addComponent(LabelFacMonto)
-                .addGap(18, 18, 18)
-                .addComponent(LabelFacEstado)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelFacMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LabelFacSucursal)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         Info.add(FacturaInfo);
@@ -523,14 +453,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         LabelVenCedula.setForeground(new java.awt.Color(64, 64, 64));
         LabelVenCedula.setText("Cedula");
 
-        LabelVenCorreo.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        LabelVenCorreo.setForeground(new java.awt.Color(64, 64, 64));
-        LabelVenCorreo.setText("Correo");
-
-        LabelVenTelefono.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        LabelVenTelefono.setForeground(new java.awt.Color(64, 64, 64));
-        LabelVenTelefono.setText("Telefono");
-
         javax.swing.GroupLayout VendedorInfoLayout = new javax.swing.GroupLayout(VendedorInfo);
         VendedorInfo.setLayout(VendedorInfoLayout);
         VendedorInfoLayout.setHorizontalGroup(
@@ -541,10 +463,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelVenNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelVenApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelVenCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelVenCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelVenTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                    .addComponent(LabelVenCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         VendedorInfoLayout.setVerticalGroup(
             VendedorInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -557,16 +477,12 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 .addComponent(LabelVenApellido)
                 .addGap(18, 18, 18)
                 .addComponent(LabelVenCedula)
-                .addGap(18, 18, 18)
-                .addComponent(LabelVenCorreo)
-                .addGap(18, 18, 18)
-                .addComponent(LabelVenTelefono)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         Info.add(VendedorInfo);
 
-        PanelVer.add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 1110, 320));
+        PanelVer.add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 840, 210));
 
         Tablas.setBackground(new java.awt.Color(53, 57, 88));
         Tablas.setLayout(new java.awt.GridLayout(1, 0, 5, 5));
@@ -601,7 +517,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
         Tablas.add(jScrollPane1);
 
-        PanelVer.add(Tablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 520, 1110, 331));
+        PanelVer.add(Tablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 1110, 331));
 
         BTDevolucion.setBackground(new java.awt.Color(232, 232, 232));
         BTDevolucion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -612,7 +528,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 BTDevolucionActionPerformed(evt);
             }
         });
-        PanelVer.add(BTDevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 870, 300, 30));
+        PanelVer.add(BTDevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 730, 300, 30));
 
         Panel_Principal.add(PanelVer, "card2");
 
@@ -656,15 +572,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
             }
         });
         jPanel5.add(BTCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, 175, 22));
-
-        CBSucursal.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        CBSucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sucursal" }));
-        CBSucursal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBSucursalActionPerformed(evt);
-            }
-        });
-        jPanel5.add(CBSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 175, -1));
 
         ClienteInformacionIngresoFactura.setBackground(new java.awt.Color(84, 102, 142));
         ClienteInformacionIngresoFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -758,11 +665,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(64, 64, 64));
         jLabel21.setText("Cedula");
         jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
-
-        jLabel22.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel22.setText("Sucursal");
-        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         jLabel28.setBackground(new java.awt.Color(53, 57, 88));
         jLabel28.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
@@ -874,111 +776,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         PanelCrearCliente.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, 20));
 
         PanelInteractuar.add(PanelCrearCliente);
-
-        jPanel6.setBackground(new java.awt.Color(246, 246, 230));
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        CBCedulaVendedoresIngreso.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        CBCedulaVendedoresIngreso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cedula Vendedor" }));
-        CBCedulaVendedoresIngreso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBCedulaVendedoresIngresoActionPerformed(evt);
-            }
-        });
-        jPanel6.add(CBCedulaVendedoresIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 210, 31));
-
-        TFNombreVendedor.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        TFNombreVendedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFNombreVendedorActionPerformed(evt);
-            }
-        });
-        jPanel6.add(TFNombreVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 210, -1));
-
-        jPanel7.setBackground(new java.awt.Color(84, 102, 142));
-        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        LabelVenNombre1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        LabelVenNombre1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelVenNombre1.setText("Nombre");
-
-        LabelVenApellido1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        LabelVenApellido1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelVenApellido1.setText("Apellido");
-
-        LabelVenCedula1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        LabelVenCedula1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelVenCedula1.setText("Cedula");
-
-        LabelVenCorreo1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        LabelVenCorreo1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelVenCorreo1.setText("Correo");
-
-        LabelVenTelefono1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        LabelVenTelefono1.setForeground(new java.awt.Color(232, 232, 232));
-        LabelVenTelefono1.setText("Telefono");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(LabelVenCorreo1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LabelVenCedula1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LabelVenApellido1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LabelVenNombre1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LabelVenTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(166, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(LabelVenNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelVenApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelVenCedula1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelVenCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(LabelVenTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel6.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 390, -1));
-
-        jLabel15.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel15.setText("Filtrar Por Nombre");
-        jPanel6.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 66, -1, -1));
-
-        jLabel16.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel16.setText("Filtrar Por Cedula");
-        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 104, -1, -1));
-
-        TFBsucarCedulaV.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        TFBsucarCedulaV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFBsucarCedulaVActionPerformed(evt);
-            }
-        });
-        jPanel6.add(TFBsucarCedulaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 210, -1));
-
-        jLabel23.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel23.setText("Cedula Venedor");
-        jPanel6.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 143, -1, -1));
-
-        jLabel5.setBackground(new java.awt.Color(53, 57, 88));
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jLabel5.setText("Vendedor");
-        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, 19));
-
-        PanelInteractuar.add(jPanel6);
 
         Panel_Ingreso.add(PanelInteractuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 6, 1310, 430));
 
@@ -1225,12 +1022,19 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        BTBorrarDetalleFactura.setText("Borrar");
+        BTBorrarDetalleFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTBorrarDetalleFacturaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelDetalleFacturaLayout = new javax.swing.GroupLayout(PanelDetalleFactura);
         PanelDetalleFactura.setLayout(PanelDetalleFacturaLayout);
         PanelDetalleFacturaLayout.setHorizontalGroup(
             PanelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDetalleFacturaLayout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
+                .addContainerGap(89, Short.MAX_VALUE)
                 .addGroup(PanelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDetalleFacturaLayout.createSequentialGroup()
                         .addComponent(PanelAgregarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1239,7 +1043,9 @@ public class Ver_Facturas extends javax.swing.JFrame {
                         .addGap(49, 49, 49))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDetalleFacturaLayout.createSequentialGroup()
                         .addComponent(LabelFAC)
-                        .addGap(586, 586, 586))
+                        .addGap(445, 445, 445)
+                        .addComponent(BTBorrarDetalleFactura)
+                        .addGap(66, 66, 66))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDetalleFacturaLayout.createSequentialGroup()
                         .addComponent(PanelFormasPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(102, 102, 102))))
@@ -1248,14 +1054,16 @@ public class Ver_Facturas extends javax.swing.JFrame {
             PanelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDetalleFacturaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(LabelFAC, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LabelFAC, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTBorrarDetalleFactura))
+                .addGap(18, 18, 18)
                 .addGroup(PanelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PanelAgregarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelFormasPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Panel_Ingreso.add(PanelDetalleFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 500, 1310, 570));
@@ -1283,16 +1091,12 @@ public class Ver_Facturas extends javax.swing.JFrame {
 //Aqui deberias poner la info del vendedor
             //ST es de String xd
             String Cedula_VendendorST=db.get("SELECT VEN_CEDULA_RUC FROM FACTURA WHERE FAC_NUMERO="+FacturaVeryActualizar);
-            Cedula_Vendedor.setText(Cedula_VendendorST);
             String Nombre_VendedorST=(db.get("SELECT VEN_NOMBRE FROM VENDEDOR WHERE VEN_CEDULA_RUC='"+Cedula_VendendorST+"'"));
-            Nombre_Vendedor.setText(Nombre_VendedorST);
             //Aqui deberia ir la info de la factura
             String Fecha_FacturaST=db.get("SELECT FAC_FECHA FROM FACTURA WHERE FAC_NUMERO="+FacturaVeryActualizar);
-            Fecha_Factura.setText(Fecha_FacturaST);
             //Aqui deberia ir la info de la sucursal
             String Sucursal_Codigo=db.get("SELECT SUC_CODIGO FROM FACTURA WHERE FAC_NUMERO="+FacturaVeryActualizar);
             String Sucursal_NombreST=db.get("SELECT SUC_NOMBRE FROM SUCURSAL WHERE SUC_CODIGO='"+Sucursal_Codigo+"'");
-            Sucursal_Nombre.setText(Sucursal_NombreST);
             //Factura
             //Fecha
             String Fac_Fecha=db.get("SELECT fac_fecha FROM factura WHERE fac_numero='" + FacturaVeryActualizar + "'");
@@ -1302,7 +1106,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
             LabelFacMonto.setText(Fac_Monto);
             //Estado
             String Fac_Estado=db.get("SELECT fac_Estado FROM factura WHERE fac_numero='" + FacturaVeryActualizar + "'");
-            LabelFacEstado.setText(Fac_Estado);
             //Sucursal
             String Suc_Nombre=db.get("select suc.suc_nombre from sucursal suc, factura fac where fac.fac_numero = '" + FacturaVeryActualizar + "' and fac.suc_codigo = suc.suc_codigo");
             LabelFacSucursal.setText(Suc_Nombre);
@@ -1319,10 +1122,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
             LabelVenApellido.setText(Ven_Apellido);
             //Correo
             String Ven_Correo=db.get("SELECT ven_correo FROM vendedor WHERE ven_cedula_ruc='" + Ven_Cedula + "'");
-            LabelVenCorreo.setText(Ven_Correo);
             //Telefono
             String Ven_Telefono=db.get("SELECT ven_telefono FROM vendedor WHERE ven_cedula_ruc='" + Ven_Cedula + "'");
-            LabelVenTelefono.setText(Ven_Telefono);
             BTDevolucion.setEnabled(true);
         }       
         else
@@ -1345,7 +1146,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         System.out.println(Comando);
         CBFactura.setModel(db.ListadoComplejo(Comando));
         String Nombre_Cliente=db.get("SELECT CLI_NOMBRE FROM CLIENTE WHERE CLI_CEDULA_RUC='"+Cedula+"'");
-        Nombre.setText(Nombre_Cliente);
         System.out.println(Comando);
         
         //Nombre
@@ -1359,13 +1159,10 @@ public class Ver_Facturas extends javax.swing.JFrame {
         LabelCliTelefono.setText(Cli_Telefono);
         //Correo
         String Cli_Correo=db.get("SELECT cli_Correo FROM cliente WHERE cli_cedula_ruc='" + Cedula + "'");
-        LabelCliCorreo.setText(Cli_Correo);
         //Ciudad
         String Cli_Ciudad=db.get("select ciu.ciu_nombre from ciudad ciu, cliente cli where cli.cli_cedula_ruc = '" + Cedula + "' and cli.ciu_codigo = ciu.ciu_codigo");
-        LabelCliCiudad.setText(Cli_Ciudad);
         //Sector
         String Cli_Sector=db.get("SELECT cli_Sector FROM cliente WHERE cli_cedula_ruc='" + Cedula + "'");
-        LabelCliSector.setText(Cli_Sector);
         //Direccion
         String Cli_Direccion=db.get("SELECT cli_Direccion FROM cliente WHERE cli_cedula_ruc='" + Cedula + "'");
         LabelCliDireccion.setText(Cli_Direccion);
@@ -1406,43 +1203,16 @@ public class Ver_Facturas extends javax.swing.JFrame {
         CBProductos.setModel(db.ListadoComplejo(Comando));
     }//GEN-LAST:event_CBCatActionPerformed
 
-    private void CBSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBSucursalActionPerformed
-        // TODO add your handling code here:
-        String Sucursal=CBSucursal.getSelectedItem().toString();
-        IDSucursal=db.get("SELECT SUC_CODIGO FROM SUCURSAL WHERE SUC_NOMBRE='"+Sucursal+"'");
-        System.out.println(IDSucursal);
-        String Comando="SELECT C.CAT_DESCRIPCION " +
-        "FROM PRODUCTO P " +
-        "INNER JOIN PRODUCTO_BODEGA PB " +
-        "ON P.PRD_CODIGO=PB.PRD_CODIGO " +
-        "INNER JOIN BODEGA B " +
-        "ON B.BOD_CODIGO=PB.BOD_CODIGO " +
-        "INNER JOIN SUCURSAL S " +
-        "ON S.SUC_CODIGO=B.SUC_CODIGO " +
-        "INNER JOIN CATEGORIA C ON C.CAT_CODIGO=P.CAT_CODIGO "+
-        "WHERE S.SUC_CODIGO='"+IDSucursal+"' " +
-        "GROUP BY C.CAT_DESCRIPCION " +
-        "ORDER BY C.CAT_DESCRIPCION";
-        System.out.println(Comando);
-        CBCat.setModel(db.ListadoComplejo(Comando));
-        CBCedulaVendedoresIngreso.setModel(db.ListadoComplejo("SELECT VEN_CEDULA_RUC FROM VENDEDOR WHERE SUC_CODIGO='"+IDSucursal+"'"));
-    }//GEN-LAST:event_CBSucursalActionPerformed
-
     private void BTCrearClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTCrearClienteActionPerformed
         // TODO add your handling code here:
-                PanelCrearCliente.setVisible(true);
-                CBProvincia.setModel(db.Listado( "PROVINCIA","PRV_NOMBRE"));
-                BTCrearFactura.setEnabled(false);
+           PanelCrearCliente.setVisible(true);
+           CBProvincia.setModel(db.Listado( "PROVINCIA","PRV_NOMBRE"));
+           BTCrearFactura.setEnabled(false);
            CBCedulaBuscar.setEnabled(false);
-           CBSucursal.setEnabled(false);
-           CBCedulaVendedoresIngreso.setEnabled(false);
            BTCrearCliente.setEnabled(false);
            TFNombre.setEnabled(false);
-           TFNombreVendedor.setEnabled(false);
            CANCELAR.setEnabled(false);
            TFClienteBuscarCedula.setEnabled(false);
-            TFNombreVendedor.setEnabled(false);
-            TFBsucarCedulaV.setEnabled(false);
     }//GEN-LAST:event_BTCrearClienteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1539,33 +1309,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         LabelPrecioTotal.setText(precioTotal + " USD");
     }//GEN-LAST:event_CBCantidadActionPerformed
 
-    private void TFNombreVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFNombreVendedorActionPerformed
-        // TODO add your handling code here:
-        String NombreV=TFNombreVendedor.getText().toUpperCase();
-        CBCedulaVendedoresIngreso.setModel(db.ListadoComplejo("SELECT VEN_CEDULA_RUC FROM VENDEDOR WHERE SUC_CODIGO='"+IDSucursal+"' AND VEN_NOMBRE LIKE'%"+NombreV+"%'"));
-    }//GEN-LAST:event_TFNombreVendedorActionPerformed
-
-    private void CBCedulaVendedoresIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBCedulaVendedoresIngresoActionPerformed
-        // TODO add your handling code here:
-            IDVendedor=CBCedulaVendedoresIngreso.getSelectedItem().toString();
-                    //Vendedor
-            //Cedula
-            String Ven_Cedula=IDVendedor;
-            LabelVenCedula1.setText(Ven_Cedula);
-            //Nombre
-            String Ven_Nombre=db.get("SELECT ven_nombre FROM vendedor WHERE ven_cedula_ruc='" + Ven_Cedula + "'");
-            LabelVenNombre1.setText(Ven_Nombre);
-            //Apellido
-            String Ven_Apellido=db.get("SELECT ven_apellido FROM vendedor WHERE ven_cedula_ruc='" + Ven_Cedula + "'");
-            LabelVenApellido1.setText(Ven_Apellido);
-            //Correo
-            String Ven_Correo=db.get("SELECT ven_correo FROM vendedor WHERE ven_cedula_ruc='" + Ven_Cedula + "'");
-            LabelVenCorreo1.setText(Ven_Correo);
-            //Telefono
-            String Ven_Telefono=db.get("SELECT ven_telefono FROM vendedor WHERE ven_cedula_ruc='" + Ven_Cedula + "'");
-            LabelVenTelefono1.setText(Ven_Telefono);
-    }//GEN-LAST:event_CBCedulaVendedoresIngresoActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         Panel_Principal.removeAll();
@@ -1584,14 +1327,11 @@ public class Ver_Facturas extends javax.swing.JFrame {
         BTCrearFactura.setEnabled(true);
         BTCrearFactura.setEnabled(true);
         CBCedulaBuscar.setEnabled(true);
-        CBSucursal.setEnabled(true);
-        CBCedulaVendedoresIngreso.setEnabled(true);
+
         BTCrearCliente.setEnabled(true);
         TFNombre.setEnabled(true);
-        TFNombreVendedor.setEnabled(true);
                               TFClienteBuscarCedula.setEnabled(true);
-            TFNombreVendedor.setEnabled(true);
-            TFBsucarCedulaV.setEnabled(true);
+
     }//GEN-LAST:event_CANCELARActionPerformed
 
     private void BTCrearFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTCrearFacturaActionPerformed
@@ -1605,18 +1345,13 @@ public class Ver_Facturas extends javax.swing.JFrame {
            PanelDetalleFactura.setVisible(true);
            BTCrearFactura.setEnabled(false);
            CBCedulaBuscar.setEnabled(false);
-           CBSucursal.setEnabled(false);
-           CBCedulaVendedoresIngreso.setEnabled(false);
            BTCrearCliente.setEnabled(false);
            TFNombre.setEnabled(false);
-           TFNombreVendedor.setEnabled(false);
-                      TFClienteBuscarCedula.setEnabled(false);
-            TFNombreVendedor.setEnabled(false);
-            TFBsucarCedulaV.setEnabled(false);
-                    PanelFormasPago.setVisible(false);
-        PanelAgregarProductos.setVisible(true);
-                String Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+FacNumero;
-        db.MostrarTabla(Comando, T2);
+           TFClienteBuscarCedula.setEnabled(false);
+           PanelFormasPago.setVisible(false);
+           PanelAgregarProductos.setVisible(true);
+           String Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+FacNumero;
+           db.MostrarTabla(Comando, T2);
            LabelFAC.setText("Factura #"+FacNumero);
         }
         else
@@ -1624,11 +1359,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
            PanelDetalleFactura.setVisible(false);
            BTCrearFactura.setEnabled(true);
            CBCedulaBuscar.setEnabled(true);
-           CBSucursal.setEnabled(true);
-           CBCedulaVendedoresIngreso.setEnabled(true);
            BTCrearCliente.setEnabled(true);
            TFNombre.setEnabled(true);
-           TFNombreVendedor.setEnabled(true);
         }
 
     }//GEN-LAST:event_BTCrearFacturaActionPerformed
@@ -1665,12 +1397,10 @@ public class Ver_Facturas extends javax.swing.JFrame {
         SetearConNuevaCedula(TFIngresoCedula.getText());
         PanelCrearCliente.setVisible(false);
         BTCrearFactura.setEnabled(true);
+        TFClienteBuscarCedula.setEnabled(true);
            CBCedulaBuscar.setEnabled(true);
-           CBSucursal.setEnabled(true);
-           CBCedulaVendedoresIngreso.setEnabled(true);
            BTCrearCliente.setEnabled(true);
            TFNombre.setEnabled(true);
-           TFNombreVendedor.setEnabled(true);
            CANCELAR.setEnabled(true);
            TFIngresoCedula.setText("");
            TFIngresoNombre.setText("");
@@ -1731,14 +1461,11 @@ public class Ver_Facturas extends javax.swing.JFrame {
         BTCrearFactura.setEnabled(true);
         BTCrearFactura.setEnabled(true);
         CBCedulaBuscar.setEnabled(true);
-        CBSucursal.setEnabled(true);
-        CBCedulaVendedoresIngreso.setEnabled(true);
+
         BTCrearCliente.setEnabled(true);
         TFNombre.setEnabled(true);
-        TFNombreVendedor.setEnabled(true);
                               TFClienteBuscarCedula.setEnabled(true);
-            TFNombreVendedor.setEnabled(true);
-            TFBsucarCedulaV.setEnabled(true);
+
         PanelCrearCliente.setVisible(false);
     }//GEN-LAST:event_BTPagarActionPerformed
 
@@ -1753,33 +1480,24 @@ public class Ver_Facturas extends javax.swing.JFrame {
            TFIngresoSector.setText("");
                    BTCrearFactura.setEnabled(true);
            CBCedulaBuscar.setEnabled(true);
-           CBSucursal.setEnabled(true);
-           CBCedulaVendedoresIngreso.setEnabled(true);
+
            BTCrearCliente.setEnabled(true);
            TFNombre.setEnabled(true);
-           TFNombreVendedor.setEnabled(true);
            CANCELAR.setEnabled(true);
                       TFClienteBuscarCedula.setEnabled(true);
-            TFNombreVendedor.setEnabled(true);
-            TFBsucarCedulaV.setEnabled(true);
-                   PanelCrearCliente.setVisible(false);
+                    PanelCrearCliente.setVisible(false);
     }//GEN-LAST:event_BTCancelarClienteActionPerformed
 
     private void TFNombreBuscadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFNombreBuscadoActionPerformed
         // TODO add your handling code here:
         CBCedula.setModel(db.ListadoComplejo("SELECT C.CLI_CEDULA_RUC FROM CLIENTE C INNER JOIN FACTURA F ON C.CLI_CEDULA_RUC=F.CLI_CEDULA_RUC WHERE C.CLI_NOMBRE LIKE '%"+TFNombreBuscado.getText().toUpperCase()+ "%'GROUP BY C.CLI_CEDULA_RUC"));
+        CBCedula.setSelectedIndex(0); 
     }//GEN-LAST:event_TFNombreBuscadoActionPerformed
 
     private void TFClienteBuscarCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFClienteBuscarCedulaActionPerformed
         // TODO add your handling code here:
         CBCedulaBuscar.setModel(db.ListadoComplejo("SELECT CLI_CEDULA_RUC FROM CLIENTE WHERE CLI_CEDULA_RUC LIKE'"+TFClienteBuscarCedula.getText().toUpperCase()+"%'"));
     }//GEN-LAST:event_TFClienteBuscarCedulaActionPerformed
-
-    private void TFBsucarCedulaVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFBsucarCedulaVActionPerformed
-        // TODO add your handling code here:
-        String CedulaV=TFBsucarCedulaV.getText().toUpperCase();
-        CBCedulaVendedoresIngreso.setModel(db.ListadoComplejo("SELECT VEN_CEDULA_RUC FROM VENDEDOR WHERE SUC_CODIGO='"+IDSucursal+"' AND VEN_CEDULA_RUC LIKE'"+CedulaV+"%'"));
-    }//GEN-LAST:event_TFBsucarCedulaVActionPerformed
 
     private void TFCedulaBuscadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFCedulaBuscadoActionPerformed
         // TODO add your handling code here:
@@ -1793,6 +1511,109 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private void CBFormaPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBFormaPagoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CBFormaPagoActionPerformed
+
+    private void TFFacturaBuscadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFFacturaBuscadaActionPerformed
+        // TODO add your handling code here:
+        String FacturaIn=TFFacturaBuscada.getText();
+        CBFacturaBuscada.setModel(db.ListadoComplejo("SELECT FAC_NUMERO FROM FACTURA WHERE TO_CHAR(FAC_NUMERO) LIKE '%"+FacturaIn+"%'"));
+    }//GEN-LAST:event_TFFacturaBuscadaActionPerformed
+
+    private void CBFacturaBuscadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBFacturaBuscadaActionPerformed
+        // TODO add your handling code here:
+        FacturaVeryActualizar=CBFacturaBuscada.getSelectedItem().toString();
+        String validar=db.get("SELECT FAC_ESTADO FROM FACTURA WHERE FAC_NUMERO='"+FacturaVeryActualizar+"'");
+        Tabla_MetodosPago.setVisible(true);
+        TABLA.setVisible(true);
+        if (validar.equals("V"))//VALIDA
+        {
+            String Cedula=db.get("SELECT CLI_CEDULA_RUC FROM FACTURA WHERE FAC_NUMERO ="+FacturaVeryActualizar);
+            String Comando="SELECT FAC_NUMERO FROM FACTURA WHERE CLI_CEDULA_RUC='"+Cedula+"'";
+            System.out.println(Comando);
+            CBFactura.setModel(db.ListadoComplejo(Comando));
+            String Nombre_Cliente=db.get("SELECT CLI_NOMBRE FROM CLIENTE WHERE CLI_CEDULA_RUC='"+Cedula+"'");
+            System.out.println(Comando);
+
+            //Nombre
+            String Cli_Nombre=db.get("SELECT cli_nombre FROM cliente WHERE cli_cedula_ruc='" + Cedula + "'");
+            LabelCliNombre.setText(Cli_Nombre);
+            //Apellido
+            String Cli_Apellido=db.get("SELECT cli_Apellido FROM cliente WHERE cli_cedula_ruc='" + Cedula + "'");
+            LabelCliApellido.setText(Cli_Apellido);
+            //Telefono
+            String Cli_Telefono=db.get("SELECT cli_Telefono FROM cliente WHERE cli_cedula_ruc='" + Cedula + "'");
+            LabelCliTelefono.setText(Cli_Telefono);
+            //Correo
+            String Cli_Correo=db.get("SELECT cli_Correo FROM cliente WHERE cli_cedula_ruc='" + Cedula + "'");
+            //Ciudad
+            String Cli_Ciudad=db.get("select ciu.ciu_nombre from ciudad ciu, cliente cli where cli.cli_cedula_ruc = '" + Cedula + "' and cli.ciu_codigo = ciu.ciu_codigo");
+            //Sector
+            String Cli_Sector=db.get("SELECT cli_Sector FROM cliente WHERE cli_cedula_ruc='" + Cedula + "'");
+            //Direccion
+            String Cli_Direccion=db.get("SELECT cli_Direccion FROM cliente WHERE cli_cedula_ruc='" + Cedula + "'");
+            LabelCliDireccion.setText(Cli_Direccion);
+            Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+FacturaVeryActualizar;
+            db.MostrarTabla(Comando, T);
+            Comando="SELECT FP.FRP_DESCRIPCION AS METODO_DE_PAGO, FPF.FPF_CANTIDAD AS CANTIDAD FROM FORMA_PAGO FP INNER JOIN FORM_PAG_FACTURA FPF ON FPF.FRP_CODIGO=FP.FRP_CODIGO WHERE FAC_NUMERO="+FacturaVeryActualizar;
+            db.MostrarTabla(Comando, T4);
+//Aqui deberias poner la info del vendedor
+            //ST es de String xd
+            String Cedula_VendendorST=db.get("SELECT VEN_CEDULA_RUC FROM FACTURA WHERE FAC_NUMERO="+FacturaVeryActualizar);
+            String Nombre_VendedorST=(db.get("SELECT VEN_NOMBRE FROM VENDEDOR WHERE VEN_CEDULA_RUC='"+Cedula_VendendorST+"'"));
+            //Aqui deberia ir la info de la factura
+            String Fecha_FacturaST=db.get("SELECT FAC_FECHA FROM FACTURA WHERE FAC_NUMERO="+FacturaVeryActualizar);
+            //Aqui deberia ir la info de la sucursal
+            String Sucursal_Codigo=db.get("SELECT SUC_CODIGO FROM FACTURA WHERE FAC_NUMERO="+FacturaVeryActualizar);
+            String Sucursal_NombreST=db.get("SELECT SUC_NOMBRE FROM SUCURSAL WHERE SUC_CODIGO='"+Sucursal_Codigo+"'");
+            //Factura
+            //Fecha
+            String Fac_Fecha=db.get("SELECT fac_fecha FROM factura WHERE fac_numero='" + FacturaVeryActualizar + "'");
+            LabelFacFecha.setText(Fac_Fecha);
+            //Monto
+            String Fac_Monto=db.get("SELECT fac_Monto FROM factura WHERE fac_numero='" + FacturaVeryActualizar + "'");
+            LabelFacMonto.setText(Fac_Monto);
+            //Estado
+            String Fac_Estado=db.get("SELECT fac_Estado FROM factura WHERE fac_numero='" + FacturaVeryActualizar + "'");
+            //Sucursal
+            String Suc_Nombre=db.get("select suc.suc_nombre from sucursal suc, factura fac where fac.fac_numero = '" + FacturaVeryActualizar + "' and fac.suc_codigo = suc.suc_codigo");
+            LabelFacSucursal.setText(Suc_Nombre);
+
+            //Vendedor
+            //Cedula
+            String Ven_Cedula=db.get("SELECT VEN_CEDULA_RUC FROM FACTURA WHERE FAC_NUMERO="+FacturaVeryActualizar);
+            LabelVenCedula.setText(Ven_Cedula);
+            //Nombre
+            String Ven_Nombre=db.get("SELECT ven_nombre FROM vendedor WHERE ven_cedula_ruc='" + Ven_Cedula + "'");
+            LabelVenNombre.setText(Ven_Nombre);
+            //Apellido
+            String Ven_Apellido=db.get("SELECT ven_apellido FROM vendedor WHERE ven_cedula_ruc='" + Ven_Cedula + "'");
+            LabelVenApellido.setText(Ven_Apellido);
+            //Correo
+            String Ven_Correo=db.get("SELECT ven_correo FROM vendedor WHERE ven_cedula_ruc='" + Ven_Cedula + "'");
+            //Telefono
+            String Ven_Telefono=db.get("SELECT ven_telefono FROM vendedor WHERE ven_cedula_ruc='" + Ven_Cedula + "'");
+            BTDevolucion.setEnabled(true);
+        }       
+        else
+        {
+            T.setColumnIdentifiers(new String[]{""});
+            T.setRowCount(0);   
+            T.addRow(new String[]{"ESTA FACTURA FUE ANULADA Y SUS PRODUCTOS DEVUELTOS"});
+            
+            T4.setColumnIdentifiers(new String[]{""});
+            T4.setRowCount(0);   
+            T4.addRow(new String[]{"ESTA FACTURA FUE ANULADA Y SUS PRODUCTOS DEVUELTOS"});
+            BTDevolucion.setEnabled(false);
+        }
+    }//GEN-LAST:event_CBFacturaBuscadaActionPerformed
+
+    private void BTBorrarDetalleFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTBorrarDetalleFacturaActionPerformed
+        // TODO add your handling code here:
+        int selectedRow =TableDetalle_Factura_Insercion.getSelectedRow();
+        String CodigoP =TableDetalle_Factura_Insercion.getValueAt(selectedRow, 0).toString();
+        db.Instruccion("DELETE FROM DETALLE_FACTURA WHERE FAC_NUMERO="+FacNumero+" AND PRD_CODIGO='"+CodigoP+"'");
+        String Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+FacNumero;
+        db.MostrarTabla(Comando, T2);
+    }//GEN-LAST:event_BTBorrarDetalleFacturaActionPerformed
     public void RefrescarVer()
     {
         CBCedula.setModel(db.ListadoComplejo("SELECT C.CLI_CEDULA_RUC FROM CLIENTE C INNER JOIN FACTURA F ON C.CLI_CEDULA_RUC=F.CLI_CEDULA_RUC GROUP BY C.CLI_CEDULA_RUC"));
@@ -1848,6 +1669,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTBorrarDetalleFactura;
     private javax.swing.JButton BTCancelarCliente;
     private javax.swing.JButton BTCrearCliente;
     private javax.swing.JButton BTCrearFactura;
@@ -1859,53 +1681,37 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CBCat;
     private javax.swing.JComboBox<String> CBCedula;
     private javax.swing.JComboBox<String> CBCedulaBuscar;
-    private javax.swing.JComboBox<String> CBCedulaVendedoresIngreso;
     private javax.swing.JComboBox<String> CBCiudad;
     private javax.swing.JComboBox<String> CBFactura;
+    private javax.swing.JComboBox<String> CBFacturaBuscada;
     private javax.swing.JComboBox<String> CBFormaPago;
     private javax.swing.JComboBox<String> CBProductos;
     private javax.swing.JComboBox<String> CBProvincia;
-    private javax.swing.JComboBox<String> CBSucursal;
-    private javax.swing.JLabel Cedula_Vendedor;
     private javax.swing.JPanel ClienteInformacionIngresoFactura;
     private javax.swing.JPanel ClienteInformacionVerFactura;
     private javax.swing.JPanel FacturaInfo;
-    private javax.swing.JLabel Fecha_Factura;
-    private javax.swing.JPanel GeneralInfo;
     private javax.swing.JPanel Info;
+    private javax.swing.JLabel LBVendedor;
     private javax.swing.JLabel LabelCliApellido;
     private javax.swing.JLabel LabelCliApellido1;
-    private javax.swing.JLabel LabelCliCiudad;
     private javax.swing.JLabel LabelCliCiudad1;
-    private javax.swing.JLabel LabelCliCorreo;
     private javax.swing.JLabel LabelCliCorreo1;
     private javax.swing.JLabel LabelCliDireccion;
     private javax.swing.JLabel LabelCliDireccion1;
     private javax.swing.JLabel LabelCliNombre;
     private javax.swing.JLabel LabelCliNombre1;
-    private javax.swing.JLabel LabelCliSector;
     private javax.swing.JLabel LabelCliSector1;
     private javax.swing.JLabel LabelCliTelefono;
     private javax.swing.JLabel LabelCliTelefono1;
     private javax.swing.JLabel LabelFAC;
-    private javax.swing.JLabel LabelFacEstado;
     private javax.swing.JLabel LabelFacFecha;
     private javax.swing.JLabel LabelFacMonto;
     private javax.swing.JLabel LabelFacSucursal;
     private javax.swing.JLabel LabelPrecioTotal;
     private javax.swing.JLabel LabelPrecioUnitario;
     private javax.swing.JLabel LabelVenApellido;
-    private javax.swing.JLabel LabelVenApellido1;
     private javax.swing.JLabel LabelVenCedula;
-    private javax.swing.JLabel LabelVenCedula1;
-    private javax.swing.JLabel LabelVenCorreo;
-    private javax.swing.JLabel LabelVenCorreo1;
     private javax.swing.JLabel LabelVenNombre;
-    private javax.swing.JLabel LabelVenNombre1;
-    private javax.swing.JLabel LabelVenTelefono;
-    private javax.swing.JLabel LabelVenTelefono1;
-    private javax.swing.JLabel Nombre;
-    private javax.swing.JLabel Nombre_Vendedor;
     private javax.swing.JPanel PanelAgregarProductos;
     private javax.swing.JPanel PanelBotones;
     private javax.swing.JPanel PanelBsucar;
@@ -1916,12 +1722,11 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private javax.swing.JPanel PanelVer;
     private javax.swing.JPanel Panel_Ingreso;
     private javax.swing.JPanel Panel_Principal;
-    private javax.swing.JLabel Sucursal_Nombre;
     private javax.swing.JTable TABLA;
-    private javax.swing.JTextField TFBsucarCedulaV;
     private javax.swing.JTextField TFCantidad;
     private javax.swing.JTextField TFCedulaBuscado;
     private javax.swing.JTextField TFClienteBuscarCedula;
+    private javax.swing.JTextField TFFacturaBuscada;
     private javax.swing.JTextField TFIngresoApellido;
     private javax.swing.JTextField TFIngresoCedula;
     private javax.swing.JTextField TFIngresoCorreo;
@@ -1931,7 +1736,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private javax.swing.JTextField TFIngresoTelefono;
     private javax.swing.JTextField TFNombre;
     private javax.swing.JTextField TFNombreBuscado;
-    private javax.swing.JTextField TFNombreVendedor;
     private javax.swing.JTextField TFProducto;
     private javax.swing.JTextField TFProductoenCategoria;
     private javax.swing.JTable TablaFormasPago;
@@ -1946,35 +1750,28 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1987,6 +1784,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private DefaultTableModel T4;
     //Variables importantes para ingresar una factura
     private String IDSucursal;
+    
     private String IDVendedor;
     private String IDCategoria;
     private String IDProducto;

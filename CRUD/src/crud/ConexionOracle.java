@@ -48,6 +48,7 @@ import javax.swing.table.DefaultTableModel;
              System.out.println("NO Conectado");
         }
     }
+    
         public ResultSet ejecutarQuery(String sql) 
     {
         System.out.println(sql);
@@ -245,6 +246,48 @@ import javax.swing.table.DefaultTableModel;
         return Integer.parseInt(get(SQL));
     }
     public void MostrarTabla(String query,DefaultTableModel T) {
+        try
+        {
+            ResultSet rs=ejecutarQuery(query);
+            if(rs!=null)
+            {
+                T.setRowCount(0);
+                ResultSetMetaData metaData = rs.getMetaData();
+                int columnCount = metaData.getColumnCount();
+                LinkedList<String> aux=new LinkedList<String>();
+                for (int i = 1; i <= columnCount; i++) {
+                    aux.add(metaData.getColumnName(i));
+                }
+                T.setColumnIdentifiers(aux.toArray());
+                System.out.println(); 
+                LinkedList<String> aux2=new LinkedList<String>();
+                while (rs.next()) {
+                    aux2.clear();
+                    System.out.println("-------------------");
+                    for (int i = 1; i <= columnCount; i++) {
+                        String saux=rs.getString(i);
+                        System.out.println(saux+" "+i);
+                        aux2.add(saux);
+                    }
+                    T.addRow(aux2.toArray());
+                }
+            }
+            else
+            {
+                T.setRowCount(0);
+                JOptionPane.showMessageDialog(null, "Tabla vacia", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+            
+        }
+        catch(SQLException e)
+        {
+            T.setRowCount(0);
+            JOptionPane.showMessageDialog(null, "Ocurrió un error en la operación: "+e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }
+    public void MostrarTablaBotn(String query,DefaultTableModel T) {
         try
         {
             ResultSet rs=ejecutarQuery(query);

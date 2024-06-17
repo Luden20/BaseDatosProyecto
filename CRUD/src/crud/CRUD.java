@@ -16,7 +16,7 @@ public class CRUD {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Ver_Facturas a=new Ver_Facturas();
+        Login a=new Login();
         a.setExtendedState(JFrame.MAXIMIZED_BOTH);
         a.setVisible(true);
     }
