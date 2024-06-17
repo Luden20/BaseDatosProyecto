@@ -20,8 +20,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
     public Ver_Facturas(String Cedula) {
         initComponents();
                 //db=new ConexionOracle("172.16.6.193","cdb1","achafla","achafla");
-        //db=new ConexionOracle("25.66.186.128","cdb1","achafla","achafla");
-        db=new ConexionOracle("172.16.0.183","cdb1","achafla","achafla");
+        db=new ConexionOracle("25.66.186.128","cdb1","achafla","achafla");
+        //db=new ConexionOracle("172.16.0.183","cdb1","achafla","achafla");
         IDVendedor=Cedula;
         IDSucursal=db.get("SELECT SUC_CODIGO FROM VENDEDOR WHERE VEN_CEDULA_RUC='"+Cedula+"'");
         LBVendedor.setText(db.get("SELECT VEN_NOMBRE FROM VENDEDOR WHERE VEN_CEDULA_RUC='"+Cedula+"'"));
