@@ -293,26 +293,26 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel1.setText("Buscar Factura");
-        PanelBsucar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
+        PanelBsucar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, -1, -1));
 
         TFFacturaBuscada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TFFacturaBuscadaActionPerformed(evt);
             }
         });
-        PanelBsucar.add(TFFacturaBuscada, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 200, 30));
+        PanelBsucar.add(TFFacturaBuscada, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 40, 200, 30));
 
         CBFacturaBuscada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBFacturaBuscadaActionPerformed(evt);
             }
         });
-        PanelBsucar.add(CBFacturaBuscada, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, 200, 30));
+        PanelBsucar.add(CBFacturaBuscada, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 90, 200, 30));
 
         PanelVer.add(PanelBsucar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 1110, 170));
 
         Info.setBackground(new java.awt.Color(53, 57, 88));
-        Info.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
+        Info.setLayout(new java.awt.GridLayout(1, 0, 30, 0));
 
         ClienteInformacionVerFactura.setBackground(new java.awt.Color(246, 246, 230));
         ClienteInformacionVerFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -345,34 +345,27 @@ public class Ver_Facturas extends javax.swing.JFrame {
             .addGroup(ClienteInformacionVerFacturaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ClienteInformacionVerFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ClienteInformacionVerFacturaLayout.createSequentialGroup()
-                        .addGroup(ClienteInformacionVerFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelCliNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabelCliApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(64, Short.MAX_VALUE))
-                    .addGroup(ClienteInformacionVerFacturaLayout.createSequentialGroup()
-                        .addGroup(ClienteInformacionVerFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ClienteInformacionVerFacturaLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(LabelCliTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(LabelCliDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelCliNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelCliApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelCliTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelCliDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         ClienteInformacionVerFacturaLayout.setVerticalGroup(
             ClienteInformacionVerFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ClienteInformacionVerFacturaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LabelCliNombre)
+                .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LabelCliNombre)
+                .addGap(18, 18, 18)
                 .addComponent(LabelCliApellido)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(LabelCliTelefono)
                 .addGap(18, 18, 18)
                 .addComponent(LabelCliDireccion)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         Info.add(ClienteInformacionVerFactura);
@@ -413,22 +406,22 @@ public class Ver_Facturas extends javax.swing.JFrame {
                     .addComponent(LabelFacMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelFacFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelFacSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         FacturaInfoLayout.setVerticalGroup(
             FacturaInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FacturaInfoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel26)
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(LabelFacFecha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(LabelFacMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(LabelFacSucursal)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         Info.add(FacturaInfo);
@@ -464,25 +457,25 @@ public class Ver_Facturas extends javax.swing.JFrame {
                     .addComponent(LabelVenNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelVenApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelVenCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         VendedorInfoLayout.setVerticalGroup(
             VendedorInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VendedorInfoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel27)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LabelVenNombre)
                 .addGap(18, 18, 18)
                 .addComponent(LabelVenApellido)
                 .addGap(18, 18, 18)
                 .addComponent(LabelVenCedula)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         Info.add(VendedorInfo);
 
-        PanelVer.add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 840, 210));
+        PanelVer.add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 1110, 210));
 
         Tablas.setBackground(new java.awt.Color(53, 57, 88));
         Tablas.setLayout(new java.awt.GridLayout(1, 0, 5, 5));
@@ -517,7 +510,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
         Tablas.add(jScrollPane1);
 
-        PanelVer.add(Tablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 1110, 331));
+        PanelVer.add(Tablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 1110, 331));
 
         BTDevolucion.setBackground(new java.awt.Color(232, 232, 232));
         BTDevolucion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -528,7 +521,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 BTDevolucionActionPerformed(evt);
             }
         });
-        PanelVer.add(BTDevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 730, 300, 30));
+        PanelVer.add(BTDevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 780, 300, 30));
 
         Panel_Principal.add(PanelVer, "card2");
 
