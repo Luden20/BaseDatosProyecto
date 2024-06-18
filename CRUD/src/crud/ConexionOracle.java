@@ -4,6 +4,7 @@
  */
 package crud;
 
+import java.sql.CallableStatement;
 
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -15,7 +16,7 @@ import java.util.LinkedList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import java.sql.Types;
 
 /**
  *
@@ -80,8 +81,23 @@ import javax.swing.table.DefaultTableModel;
             System.out.println(sql);
             PreparedStatement pstmt = Conexion.prepareStatement(sql);
             pstmt.executeUpdate();
+            return true;
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    public boolean Instruccion(String sql,String MensajeAprobatorio)
+    {
+        try
+        {
+            System.out.println(sql);
+            PreparedStatement pstmt = Conexion.prepareStatement(sql);
+            pstmt.executeUpdate();
             System.out.println("Se hizo bien");
-            JOptionPane.showMessageDialog(null, "Operacion ejecutada correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,MensajeAprobatorio, "Información", JOptionPane.INFORMATION_MESSAGE);
             return true;
         }
         catch(SQLException e)
@@ -285,6 +301,46 @@ import javax.swing.table.DefaultTableModel;
             T.setRowCount(0);
             JOptionPane.showMessageDialog(null, "Ocurrió un error en la operación: "+e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
+        }
+    }
+    public boolean FuncionAnular(int valor)
+    {
+        try
+        {
+            CallableStatement fun=Conexion.prepareCall("{ ? = call ANULAR_FACTURA(?) }");
+            fun.registerOutParameter(1, Types.BOOLEAN);
+            fun.setInt(2, valor); 
+            fun.execute();
+            JOptionPane.showMessageDialog(null, "Operacion ejecutada correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+            return fun.getBoolean(1);
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, "Ocurrió un error en la operación: "+e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+    public double FuncionObtenerPrecio(String prd)
+    {
+        try
+        {
+            CallableStatement fun = Conexion.prepareCall("{ ? = call CAL_PREC_PRD(?) }");
+            
+            // Registrar el parámetro de salida (NUMBER)
+            fun.registerOutParameter(1, Types.NUMERIC);
+            
+            // Establecer el parámetro de entrada
+            fun.setString(2, prd); // Suponiendo que "P001" es el código del producto
+            
+            // Ejecutar la llamada
+            fun.execute();
+            
+            // Obtener el resultado
+            return  fun.getDouble(1);
+        }
+        catch(SQLException e)
+        {
+            return -1;
         }
     }
     public void MostrarTablaBotn(String query,DefaultTableModel T) {

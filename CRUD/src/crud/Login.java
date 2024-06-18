@@ -5,6 +5,7 @@
 package crud;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,8 +18,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-              db=new ConexionOracle("25.66.186.128","cdb1","achafla","achafla");
-  
+              //db=new ConexionOracle("25.66.186.128","cdb1","achafla","achafla");
+  db=new ConexionOracle("25.0.163.143","cdb1","crud","lticPUCE24"); 
         //db=new ConexionOracle("172.16.0.183","cdb1","achafla","achafla");
 
     }
@@ -79,6 +80,10 @@ public class Login extends javax.swing.JFrame {
             Ver_Facturas a=new Ver_Facturas(Vendedor);
             a.setExtendedState(JFrame.MAXIMIZED_BOTH);
             a.setVisible(true);
+        }
+        else
+        {
+                        JOptionPane.showMessageDialog(null, "Usuario Incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
