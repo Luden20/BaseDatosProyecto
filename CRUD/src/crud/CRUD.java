@@ -17,7 +17,6 @@ public class CRUD {
      */
     public static void main(String[] args) {
         Login a=new Login();
-        a.setExtendedState(JFrame.MAXIMIZED_BOTH);
         a.setVisible(true);
     }
     

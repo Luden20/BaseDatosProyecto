@@ -232,6 +232,7 @@ public class Login extends javax.swing.JFrame {
             Ver_Facturas a=new Ver_Facturas(Vendedor);
             a.setExtendedState(JFrame.MAXIMIZED_BOTH);
             a.setVisible(true);
+            this.dispose();
         }
         else
         {

@@ -42,6 +42,7 @@ import java.sql.Types;
             user=User;
             pass=Password;
             Conexion=DriverManager.getConnection(url, user, pass);
+            Conexion.setAutoCommit(false);
             System.out.println("Conectado");
         }
         catch(ClassNotFoundException | SQLException e)
@@ -343,6 +344,50 @@ import java.sql.Types;
             return -1;
         }
     }
+    public double FuncionIVATotal(Integer fac)
+    {
+        try
+        {
+            CallableStatement fun = Conexion.prepareCall("{ ? = call TotalIVA(?) }");
+            fun.registerOutParameter(1, Types.NUMERIC);
+            fun.setInt(2, fac);
+            fun.execute();
+            return  fun.getDouble(1);
+        }
+        catch(SQLException e)
+        {
+            return -1;
+        }
+    }
+     public double FuncionTotalSinIVA(Integer fac)
+    {
+        try
+        {
+            CallableStatement fun = Conexion.prepareCall("{ ? = call TotalSinIva(?) }");
+            fun.registerOutParameter(1, Types.NUMERIC);
+            fun.setInt(2, fac);
+            fun.execute();
+            return  fun.getDouble(1);
+        }
+        catch(SQLException e)
+        {
+            return -1;
+        }
+    }
+    public void ProcedimientoComision(String CedulaVen,Integer fac)
+    {
+        try
+        {
+            CallableStatement fun = Conexion.prepareCall("{call PAGAR_COMISION(?, ?)}");
+            fun.setString(1,CedulaVen);
+            fun.setInt(2, fac);
+            fun.execute();
+        }
+        catch(SQLException e)
+        {
+           
+        }
+    }
     public void MostrarTablaBotn(String query,DefaultTableModel T) {
         try
         {
@@ -383,6 +428,26 @@ import java.sql.Types;
             T.setRowCount(0);
             JOptionPane.showMessageDialog(null, "Ocurrió un error en la operación: "+e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
+        }
+    }
+    public void COMMIT()
+    {
+        try{
+            Conexion.commit();
+        }
+        catch(SQLException e)
+        {
+        
+        }
+    }
+    public void ROLLBACK()
+    {
+        try{
+            Conexion.rollback();
+        }
+        catch(SQLException e)
+        {
+        
         }
     }
 }

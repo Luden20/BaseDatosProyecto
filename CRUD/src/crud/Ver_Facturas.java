@@ -25,7 +25,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         db=new ConexionOracle("25.0.163.143","cdb1","crud","lticPUCE24");
         IDVendedor=Cedula;
         IDSucursal=db.get("SELECT SUC_CODIGO FROM VENDEDOR WHERE VEN_CEDULA_RUC='"+Cedula+"'");
-        LBVendedor.setText(db.get("SELECT VEN_NOMBRE FROM VENDEDOR WHERE VEN_CEDULA_RUC='"+Cedula+"'"));
+        LBVendedor.setText("Bienvenido "+db.get("SELECT VEN_NOMBRE FROM VENDEDOR WHERE VEN_CEDULA_RUC='"+Cedula+"'")+" "+db.get("SELECT VEN_APELLIDO FROM VENDEDOR WHERE VEN_CEDULA_RUC='"+Cedula+"'"));
         PanelDetalleFactura.setVisible(false);
         T=new DefaultTableModel();
         T2=new DefaultTableModel();
@@ -165,7 +165,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         PanelDetalleFactura = new javax.swing.JPanel();
         PanelAgregarProductos = new javax.swing.JPanel();
         CBCat = new javax.swing.JComboBox<>();
-        TFProductoenCategoria = new javax.swing.JTextField();
+        TFProductoCodigo = new javax.swing.JTextField();
         CBProductos = new javax.swing.JComboBox<>();
         TFProducto = new javax.swing.JTextField();
         CBCantidad = new javax.swing.JComboBox<>();
@@ -186,17 +186,21 @@ public class Ver_Facturas extends javax.swing.JFrame {
         TablaFormasPago = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        LabelTotalFactura = new javax.swing.JLabel();
+        LabelTotalIVAFactura = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        LabelTotalFactura = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        LabelTotalSinIVA = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.PAGE_AXIS));
 
-        Botones.setBackground(new java.awt.Color(102, 102, 102));
+        Botones.setBackground(new java.awt.Color(255, 255, 255));
         Botones.setLayout(new javax.swing.BoxLayout(Botones, javax.swing.BoxLayout.LINE_AXIS));
 
-        LBVendedor.setForeground(new java.awt.Color(255, 255, 255));
+        LBVendedor.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
         LBVendedor.setText("Bienvenido ");
         Botones.add(LBVendedor);
 
@@ -837,11 +841,11 @@ public class Ver_Facturas extends javax.swing.JFrame {
             }
         });
 
-        TFProductoenCategoria.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        TFProductoenCategoria.setText("Buscar en Categoria");
-        TFProductoenCategoria.addActionListener(new java.awt.event.ActionListener() {
+        TFProductoCodigo.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        TFProductoCodigo.setText("Buscar por Codigo");
+        TFProductoCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFProductoenCategoriaActionPerformed(evt);
+                TFProductoCodigoActionPerformed(evt);
             }
         });
 
@@ -854,7 +858,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         });
 
         TFProducto.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        TFProducto.setText("Buscar en Productos");
+        TFProducto.setText("Buscar por nombre");
         TFProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TFProductoActionPerformed(evt);
@@ -910,29 +914,27 @@ public class Ver_Facturas extends javax.swing.JFrame {
         PanelAgregarProductosLayout.setHorizontalGroup(
             PanelAgregarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelAgregarProductosLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
                 .addGroup(PanelAgregarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelPrecioTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelAgregarProductosLayout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(jButton7))
+                    .addGroup(PanelAgregarProductosLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
                         .addGroup(PanelAgregarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LabelPrecioUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelAgregarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jButton3)
                                 .addGroup(PanelAgregarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(TFProductoenCategoria, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TFProductoCodigo, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(CBProductos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(CBCat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(TFProducto)
                                     .addGroup(PanelAgregarProductosLayout.createSequentialGroup()
                                         .addComponent(CBCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                                        .addComponent(BTBorrarDetalleFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 30, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(PanelAgregarProductosLayout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jButton7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(BTBorrarDetalleFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         PanelAgregarProductosLayout.setVerticalGroup(
             PanelAgregarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -942,7 +944,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(CBProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(TFProductoenCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TFProductoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(TFProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -952,9 +954,11 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(LabelPrecioUnitario)
                 .addGap(18, 18, 18)
-                .addGroup(PanelAgregarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LabelPrecioTotal)
-                    .addComponent(jButton3))
+                .addGroup(PanelAgregarProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3)
+                    .addGroup(PanelAgregarProductosLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(LabelPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton7)
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -1042,33 +1046,63 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(84, 102, 142));
 
+        LabelTotalIVAFactura.setBackground(new java.awt.Color(0, 0, 0));
+        LabelTotalIVAFactura.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        LabelTotalIVAFactura.setForeground(new java.awt.Color(242, 242, 242));
+        LabelTotalIVAFactura.setText("TOTAL");
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel1.setText("IVA:");
+
         LabelTotalFactura.setBackground(new java.awt.Color(0, 0, 0));
         LabelTotalFactura.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
         LabelTotalFactura.setForeground(new java.awt.Color(242, 242, 242));
         LabelTotalFactura.setText("TOTAL");
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel1.setText("Total a pagar:");
+        jLabel3.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel3.setText("Total a pagar:");
+
+        jLabel5.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel5.setText("Sub total");
+
+        LabelTotalSinIVA.setBackground(new java.awt.Color(0, 0, 0));
+        LabelTotalSinIVA.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        LabelTotalSinIVA.setForeground(new java.awt.Color(242, 242, 242));
+        LabelTotalSinIVA.setText("TOTAL");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(LabelTotalSinIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addComponent(LabelTotalFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LabelTotalIVAFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelTotalFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelTotalIVAFactura)
+                    .addComponent(jLabel1)
                     .addComponent(LabelTotalFactura)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(LabelTotalSinIVA))
                 .addGap(15, 15, 15))
         );
 
@@ -1087,12 +1121,12 @@ public class Ver_Facturas extends javax.swing.JFrame {
                         .addComponent(PanelAgregarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
                         .addGroup(PanelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 913, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(PanelDetalleFacturaLayout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addComponent(PanelFormasPago, javax.swing.GroupLayout.PREFERRED_SIZE, 1198, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         PanelDetalleFacturaLayout.setVerticalGroup(
             PanelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1129,7 +1163,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         TABLA.setVisible(true);
         if (validar.equals("V"))//VALIDA
         {
-            String Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+FacturaVeryActualizar;
+            String Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio AS Precio_Total,p.prd_paga_iva as IVA from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+FacturaVeryActualizar;
             db.MostrarTabla(Comando, T);
             Comando="SELECT FP.FRP_DESCRIPCION AS METODO_DE_PAGO, FPF.FPF_CANTIDAD AS CANTIDAD FROM FORMA_PAGO FP INNER JOIN FORM_PAG_FACTURA FPF ON FPF.FRP_CODIGO=FP.FRP_CODIGO WHERE FAC_NUMERO="+FacturaVeryActualizar;
             db.MostrarTabla(Comando, T4);
@@ -1148,7 +1182,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
             LabelFacFecha.setText(Fac_Fecha);
             //Monto
             String Fac_Monto=db.get("SELECT fac_Monto FROM factura WHERE fac_numero='" + FacturaVeryActualizar + "'");
-            LabelFacMonto.setText(Fac_Monto);
+            LabelFacMonto.setText(Fac_Monto+" USD");
             //Estado
             String Fac_Estado=db.get("SELECT fac_Estado FROM factura WHERE fac_numero='" + FacturaVeryActualizar + "'");
             //Sucursal
@@ -1304,8 +1338,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
     private void TFProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFProductoActionPerformed
         // TODO add your handling code here:
-        String Categoria=CBCat.getSelectedItem().toString();
-        IDCategoria=db.get("SELECT CAT_CODIGO FROM CATEGORIA WHERE CAT_DESCRIPCION='"+Categoria+"'");
         String ProductoSS=TFProducto.getText().toUpperCase();
         String Comando="SELECT P.PRD_DESCRIPCION " +
         "FROM PRODUCTO P " +
@@ -1321,11 +1353,9 @@ public class Ver_Facturas extends javax.swing.JFrame {
         CBProductos.setModel(db.ListadoComplejo(Comando));
     }//GEN-LAST:event_TFProductoActionPerformed
 
-    private void TFProductoenCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFProductoenCategoriaActionPerformed
+    private void TFProductoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFProductoCodigoActionPerformed
         // TODO add your handling code here:
-        String Categoria=CBCat.getSelectedItem().toString();
-        IDCategoria=db.get("SELECT CAT_CODIGO FROM CATEGORIA WHERE CAT_DESCRIPCION='"+Categoria+"'");
-        String ProductoSS=TFProductoenCategoria.getText().toUpperCase();
+        String ProductoSS=TFProductoCodigo.getText().toUpperCase();
         String Comando="SELECT P.PRD_DESCRIPCION " +
         "FROM PRODUCTO P " +
         "INNER JOIN PRODUCTO_BODEGA PB " +
@@ -1335,11 +1365,10 @@ public class Ver_Facturas extends javax.swing.JFrame {
         "INNER JOIN SUCURSAL S " +
         "ON S.SUC_CODIGO=B.SUC_CODIGO " +
         "WHERE S.SUC_CODIGO='"+IDSucursal+"' " +
-        "AND P.CAT_CODIGO='"+IDCategoria+"' " +
-        "AND P.PRD_DESCRIPCION LIKE '%"+ProductoSS+"%'"+
+        "AND P.PRD_CODIGO LIKE '%"+ProductoSS+"%'"+
         "GROUP BY P.PRD_DESCRIPCION";
         CBProductos.setModel(db.ListadoComplejo(Comando));
-    }//GEN-LAST:event_TFProductoenCategoriaActionPerformed
+    }//GEN-LAST:event_TFProductoCodigoActionPerformed
 
     private void CBCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBCantidadActionPerformed
         // TODO add your handling code here:
@@ -1365,26 +1394,21 @@ public class Ver_Facturas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void CANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CANCELARActionPerformed
-        // TODO add your handling code here:
-        db.Instruccion("DELETE FROM DETALLE_FACTURA WHERE FAC_NUMERO="+FacNumero);
-        db.Instruccion("DELETE FROM FORM_PAG_FACTURA WHERE FAC_NUMERO="+FacNumero+"");
-        db.Instruccion("DELETE FROM FACTURA WHERE FAC_NUMERO="+FacNumero);
-        db.Instruccion("ROLLBACK");
+
+        db.ROLLBACK();
         PanelDetalleFactura.setVisible(false);
         BTCrearFactura.setEnabled(true);
         BTCrearFactura.setEnabled(true);
         CBCedulaBuscar.setEnabled(true);
-
         BTCrearCliente.setEnabled(true);
         TFNombre.setEnabled(true);
-                              TFClienteBuscarCedula.setEnabled(true);
-
+        TFClienteBuscarCedula.setEnabled(true);
     }//GEN-LAST:event_CANCELARActionPerformed
 
     private void BTCrearFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTCrearFacturaActionPerformed
         // TODO add your handling code here:
-        db.Instruccion("COMMIT");
-        FacNumero=db.get("SELECT COUNT(*)+100 FROM FACTURA");
+                db.COMMIT();
+        FacNumero=db.get("SELECT COUNT(*)+1 FROM FACTURA");
         IDProducto="";
         boolean crearFac=db.Instruccion("INSERT INTO FACTURA(FAC_NUMERO,SUC_CODIGO,TRN_CODIGO,CLI_CEDULA_RUC,VEN_CEDULA_RUC,FAC_FECHA,FAC_MONTO,FAC_ESTADO) VALUES("+FacNumero+",'"+IDSucursal+"','T-003','"+CedulaIngresoFactura+"','"+IDVendedor+"',SYSDATE,0,'V')","Factura creada exitosamente");
         if(crearFac)
@@ -1467,10 +1491,9 @@ public class Ver_Facturas extends javax.swing.JFrame {
         // TODO add your handling code here:
         String cantidad = CBCantidad.getSelectedItem().toString();
         String PrecioU=db.get("SELECT PRD_PRECIO FROM PRODUCTO WHERE PRD_CODIGO='"+IDProducto+"'");
-        String insercion="INSERT INTO DETALLE_FACTURA VALUES("+FacNumero+",'"+IDProducto+"',"+cantidad+",1)";
+        String insercion="INSERT INTO DETALLE_FACTURA VALUES("+FacNumero+",'"+IDProducto+"',"+cantidad+",0)";
         db.Instruccion(insercion);
-        
-        String Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+FacNumero;
+        String Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio as Precio_Total,p.prd_paga_iva as IVA  from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+FacNumero;
         db.MostrarTabla(Comando, T2);
         Comando="SELECT PRB_EXISTENCIA FROM PRODUCTO_BODEGA PB "+
                 "INNER JOIN BODEGA B ON PB.BOD_CODIGO=B.BOD_CODIGO "+
@@ -1480,7 +1503,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
         System.out.println(Comando);
         CBCantidad.setModel(Utilidades.ModeloCant(db.getInt(Comando)));
         LabelTotalFactura.setText(db.get("SELECT FAC_MONTO FROM FACTURA WHERE FAC_NUMERO="+FacNumero)+"USD TOTAL");
-        System.out.println("SELECT FAC_MONTO FROM FACTURA WHERE FAC_NUMERO="+FacNumero);
+        LabelTotalIVAFactura.setText(db.FuncionIVATotal(Integer.parseInt(FacNumero))+" USD");
+        LabelTotalSinIVA.setText(db.FuncionTotalSinIVA(Integer.parseInt(FacNumero))+" USD");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1499,7 +1523,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
         String IDFP=db.get("SELECT FRP_CODIGO FROM FORMA_PAGO WHERE FRP_DESCRIPCION='"+FP+"'");
         System.out.println(IDFP);
         String Cantidad=TFCantidad.getText();
-        db.Instruccion("INSERT INTO FORM_PAG_FACTURA VALUES('"+IDFP+"',"+FacNumero+","+Cantidad+")");
+        db.Instruccion("INSERT INTO FORM_PAG_FACTURA VALUES('"+IDFP+"',"+FacNumero+","+Cantidad+")","Metodo de pago agregado");
         
         String Consulta="SELECT FP.FRP_DESCRIPCION AS METODO_DE_PAGO, FPF.FPF_CANTIDAD AS CANTIDAD FROM FORMA_PAGO FP INNER JOIN FORM_PAG_FACTURA FPF ON FPF.FRP_CODIGO=FP.FRP_CODIGO WHERE FAC_NUMERO="+FacNumero+"";
         db.MostrarTabla(Consulta, T3);
@@ -1509,7 +1533,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
 
     private void BTPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTPagarActionPerformed
         // TODO add your handling code here:
-        db.Instruccion("COMMIT","Exito");
+
+        db.ProcedimientoComision(IDVendedor, Integer.parseInt(FacNumero));
         PanelDetalleFactura.setVisible(false);
         BTCrearFactura.setEnabled(true);
         BTCrearFactura.setEnabled(true);
@@ -1520,6 +1545,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
                               TFClienteBuscarCedula.setEnabled(true);
 
         PanelCrearCliente.setVisible(false);
+                db.COMMIT();
     }//GEN-LAST:event_BTPagarActionPerformed
 
     private void BTCancelarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTCancelarClienteActionPerformed
@@ -1609,7 +1635,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
             //Direccion
             String Cli_Direccion=db.get("SELECT cli_Direccion FROM cliente WHERE cli_cedula_ruc='" + Cedula + "'");
             LabelCliDireccion.setText(Cli_Direccion);
-            Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+FacturaVeryActualizar;
+            Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio AS Precio_Total,p.prd_paga_iva as IVA  from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+FacturaVeryActualizar;
             db.MostrarTabla(Comando, T);
             Comando="SELECT FP.FRP_DESCRIPCION AS METODO_DE_PAGO, FPF.FPF_CANTIDAD AS CANTIDAD FROM FORMA_PAGO FP INNER JOIN FORM_PAG_FACTURA FPF ON FPF.FRP_CODIGO=FP.FRP_CODIGO WHERE FAC_NUMERO="+FacturaVeryActualizar;
             db.MostrarTabla(Comando, T4);
@@ -1628,7 +1654,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
             LabelFacFecha.setText(Fac_Fecha);
             //Monto
             String Fac_Monto=db.get("SELECT fac_Monto FROM factura WHERE fac_numero='" + FacturaVeryActualizar + "'");
-            LabelFacMonto.setText(Fac_Monto);
+            LabelFacMonto.setText(Fac_Monto+" USD");
             //Estado
             String Fac_Estado=db.get("SELECT fac_Estado FROM factura WHERE fac_numero='" + FacturaVeryActualizar + "'");
             //Sucursal
@@ -1671,6 +1697,9 @@ public class Ver_Facturas extends javax.swing.JFrame {
         db.Instruccion("DELETE FROM DETALLE_FACTURA WHERE FAC_NUMERO="+FacNumero+" AND PRD_CODIGO='"+CodigoP+"'");
         String Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+FacNumero;
         db.MostrarTabla(Comando, T2);
+        LabelTotalFactura.setText(db.get("SELECT FAC_MONTO FROM FACTURA WHERE FAC_NUMERO="+FacNumero)+"USD TOTAL");
+        LabelTotalIVAFactura.setText(db.FuncionIVATotal(Integer.parseInt(FacNumero))+" USD");
+        LabelTotalSinIVA.setText(db.FuncionTotalSinIVA(Integer.parseInt(FacNumero))+" USD");
     }//GEN-LAST:event_BTBorrarDetalleFacturaActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -1700,8 +1729,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 break;
             }
         }
-
-        // Mostrar el JFrame
         this.pack();
 
     }
@@ -1783,6 +1810,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private javax.swing.JLabel LabelPrecioTotal;
     private javax.swing.JLabel LabelPrecioUnitario;
     private javax.swing.JLabel LabelTotalFactura;
+    private javax.swing.JLabel LabelTotalIVAFactura;
+    private javax.swing.JLabel LabelTotalSinIVA;
     private javax.swing.JLabel LabelVenApellido;
     private javax.swing.JLabel LabelVenCedula;
     private javax.swing.JLabel LabelVenNombre;
@@ -1811,7 +1840,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private javax.swing.JTextField TFNombre;
     private javax.swing.JTextField TFNombreBuscado;
     private javax.swing.JTextField TFProducto;
-    private javax.swing.JTextField TFProductoenCategoria;
+    private javax.swing.JTextField TFProductoCodigo;
     private javax.swing.JTable TablaFormasPago;
     private javax.swing.JTable Tabla_MetodosPago;
     private javax.swing.JPanel Tablas;
@@ -1844,7 +1873,9 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1864,7 +1895,7 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private DefaultTableModel T4;
     //Variables importantes para ingresar una factura
     private String IDSucursal;
-    
+    private Double IVA;
     private String IDVendedor;
     private String IDCategoria;
     private String IDProducto;
