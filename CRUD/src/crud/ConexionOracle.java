@@ -341,7 +341,7 @@ import java.sql.Types;
         }
         catch(SQLException e)
         {
-            return -1;
+            return 0;
         }
     }
     public double FuncionIVATotal(Integer fac)
@@ -356,7 +356,7 @@ import java.sql.Types;
         }
         catch(SQLException e)
         {
-            return -1;
+            return 0;
         }
     }
      public double FuncionTotalSinIVA(Integer fac)
@@ -371,7 +371,7 @@ import java.sql.Types;
         }
         catch(SQLException e)
         {
-            return -1;
+            return 0;
         }
     }
     public void ProcedimientoComision(String CedulaVen,Integer fac)

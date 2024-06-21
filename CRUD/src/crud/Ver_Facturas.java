@@ -1198,7 +1198,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
             //Sucursal
             String Suc_Nombre=db.get("select suc.suc_nombre from sucursal suc, factura fac where fac.fac_numero = '" + FacturaVeryActualizar + "' and fac.suc_codigo = suc.suc_codigo");
             LabelFacSucursal.setText(Suc_Nombre);
-
             //Vendedor
             //Cedula
             String Ven_Cedula=db.get("SELECT VEN_CEDULA_RUC FROM FACTURA WHERE FAC_NUMERO="+FacturaVeryActualizar);
@@ -1434,6 +1433,9 @@ public class Ver_Facturas extends javax.swing.JFrame {
            String Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+FacNumero;
            db.MostrarTabla(Comando, T2);
            LabelFAC.setText("Factura #"+FacNumero);
+        LabelTotalFactura.setText(db.get("SELECT FAC_MONTO FROM FACTURA WHERE FAC_NUMERO="+FacNumero)+"USD TOTAL");
+        LabelTotalIVAFactura.setText(db.FuncionIVATotal(Integer.parseInt(FacNumero))+" USD");
+        LabelTotalSinIVA.setText(db.FuncionTotalSinIVA(Integer.parseInt(FacNumero))+" USD");
         }
         else
         {
@@ -1706,7 +1708,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRow =TableDetalle_Factura_Insercion.getSelectedRow();
         String CodigoP =TableDetalle_Factura_Insercion.getValueAt(selectedRow, 0).toString();
-        db.Instruccion("DELETE FROM DETALLE_FACTURA WHERE FAC_NUMERO="+FacNumero+" AND PRD_CODIGO='"+CodigoP+"'");
+        String CANTIDAD =TableDetalle_Factura_Insercion.getValueAt(selectedRow, 2).toString();
+        db.Instruccion("DELETE FROM DETALLE_FACTURA WHERE FAC_NUMERO="+FacNumero+" AND PRD_CODIGO='"+CodigoP+"' AND DTF_CANTIDAD="+CANTIDAD);
         String Comando="select df.prd_codigo AS Codigo,p.prd_descripcion as Descripcion,df.dtf_cantidad as Cantidad,p.prd_precio AS Precio_Unitario, df.dtf_precio from detalle_factura df inner join producto p on p.prd_codigo=df.prd_codigo WHERE df.FAC_NUMERO="+FacNumero;
         db.MostrarTabla(Comando, T2);
         LabelTotalFactura.setText(db.get("SELECT FAC_MONTO FROM FACTURA WHERE FAC_NUMERO="+FacNumero)+"USD TOTAL");
