@@ -100,10 +100,11 @@ public class Ver_Facturas extends javax.swing.JFrame {
         LabelCliDireccion = new javax.swing.JLabel();
         FacturaInfo = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         LabelFacFecha = new javax.swing.JLabel();
         LabelFacMonto = new javax.swing.JLabel();
         LabelFacSucursal = new javax.swing.JLabel();
+        LabelFacSubTotal = new javax.swing.JLabel();
+        LabelFacIVA = new javax.swing.JLabel();
         VendedorInfo = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         LabelVenNombre = new javax.swing.JLabel();
@@ -377,10 +378,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
         jLabel26.setForeground(new java.awt.Color(53, 57, 88));
         jLabel26.setText("Factura");
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(64, 64, 64));
-        jLabel2.setText("Factura");
-
         LabelFacFecha.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         LabelFacFecha.setForeground(new java.awt.Color(64, 64, 64));
         LabelFacFecha.setText("Fecha");
@@ -393,6 +390,14 @@ public class Ver_Facturas extends javax.swing.JFrame {
         LabelFacSucursal.setForeground(new java.awt.Color(64, 64, 64));
         LabelFacSucursal.setText("Sucursal");
 
+        LabelFacSubTotal.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        LabelFacSubTotal.setForeground(new java.awt.Color(64, 64, 64));
+        LabelFacSubTotal.setText("Subtotal");
+
+        LabelFacIVA.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        LabelFacIVA.setForeground(new java.awt.Color(64, 64, 64));
+        LabelFacIVA.setText("IVA");
+
         javax.swing.GroupLayout FacturaInfoLayout = new javax.swing.GroupLayout(FacturaInfo);
         FacturaInfo.setLayout(FacturaInfoLayout);
         FacturaInfoLayout.setHorizontalGroup(
@@ -400,8 +405,9 @@ public class Ver_Facturas extends javax.swing.JFrame {
             .addGroup(FacturaInfoLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(FacturaInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelFacIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelFacSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelFacMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelFacFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelFacSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -413,14 +419,16 @@ public class Ver_Facturas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
                 .addComponent(LabelFacFecha)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LabelFacSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(LabelFacIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LabelFacMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LabelFacSucursal)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         Info.add(FacturaInfo);
@@ -1179,10 +1187,12 @@ public class Ver_Facturas extends javax.swing.JFrame {
             //Factura
             //Fecha
             String Fac_Fecha=db.get("SELECT fac_fecha FROM factura WHERE fac_numero='" + FacturaVeryActualizar + "'");
-            LabelFacFecha.setText(Fac_Fecha);
+            LabelFacFecha.setText(""+Fac_Fecha);
             //Monto
             String Fac_Monto=db.get("SELECT fac_Monto FROM factura WHERE fac_numero='" + FacturaVeryActualizar + "'");
-            LabelFacMonto.setText(Fac_Monto+" USD");
+            LabelFacMonto.setText("Total"+Fac_Monto+"USD");
+            LabelFacSubTotal.setText("Subtotal:"+db.FuncionTotalSinIVA(Integer.parseInt(FacturaVeryActualizar))+"USD");
+            LabelFacIVA.setText("IVA:"+db.FuncionIVATotal(Integer.parseInt(FacturaVeryActualizar))+"USD");
             //Estado
             String Fac_Estado=db.get("SELECT fac_Estado FROM factura WHERE fac_numero='" + FacturaVeryActualizar + "'");
             //Sucursal
@@ -1655,6 +1665,8 @@ public class Ver_Facturas extends javax.swing.JFrame {
             //Monto
             String Fac_Monto=db.get("SELECT fac_Monto FROM factura WHERE fac_numero='" + FacturaVeryActualizar + "'");
             LabelFacMonto.setText(Fac_Monto+" USD");
+            LabelFacSubTotal.setText("Subtotal:"+db.FuncionTotalSinIVA(Integer.parseInt(FacturaVeryActualizar))+"USD");
+            LabelFacIVA.setText("IVA:"+db.FuncionIVATotal(Integer.parseInt(FacturaVeryActualizar))+"USD");
             //Estado
             String Fac_Estado=db.get("SELECT fac_Estado FROM factura WHERE fac_numero='" + FacturaVeryActualizar + "'");
             //Sucursal
@@ -1805,7 +1817,9 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private javax.swing.JLabel LabelCliTelefono1;
     private javax.swing.JLabel LabelFAC;
     private javax.swing.JLabel LabelFacFecha;
+    private javax.swing.JLabel LabelFacIVA;
     private javax.swing.JLabel LabelFacMonto;
+    private javax.swing.JLabel LabelFacSubTotal;
     private javax.swing.JLabel LabelFacSucursal;
     private javax.swing.JLabel LabelPrecioTotal;
     private javax.swing.JLabel LabelPrecioUnitario;
@@ -1865,7 +1879,6 @@ public class Ver_Facturas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
