@@ -19,7 +19,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
               //db=new ConexionOracle("25.66.186.128","cdb1","achafla","achafla");
-  db=new ConexionOracle("25.0.163.143","cdb1","crud","lticPUCE24"); 
+  db=new ConexionOracle("172.16.6.189","cdb1","crud","lticPUCE24"); 
         //db=new ConexionOracle("172.16.0.183","cdb1","achafla","achafla");
 
     }
